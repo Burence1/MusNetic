@@ -1,0 +1,18 @@
+{% macro displayGenreList(genre_list) %} {% for genre in genre_list %} {%if genre.id > 0%}
+<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
+    <img src="{{ genre.poster }}" alt="{{ genre.title }} poster" class="img-responsive">
+    <li class="text-center">
+        {{ genre.title|truncate(10)}}
+    </li>
+</div>
+{%endif%}{% endfor %} {% endmacro %} {% macro displayPlaylistList(genre_track_list) %} {%for track in genre_track_list%}
+
+<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
+    <img src="{{ track.picture }}" alt="{{ track.title }} poster" class="img-responsive">
+    <li class="text-center">
+        {{ track.title|truncate(10)}}
+    </li>
+    <li><a href="{{url_for('main.genre_music')}}"><i class="fa fa-play"></i></a>
+
+</div>
+{% endfor %} {% endmacro %}

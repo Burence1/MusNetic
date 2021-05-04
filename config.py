@@ -6,6 +6,10 @@ class Config:
   '''
 
   SECRET_KEY = os.environ.get('SECRET_KEY')
+  GENRE_API_BASE_URL = 'https://api.deezer.com/genre'
+  PLAYLIST_API_BASE_URL = 'https://api.deezer.com/radio'
+  TRACK_API_BASE_URL = 'https://api.deezer.com/radio/{}/tracks'
+
 
   @staticmethod
   def init_app(app):
