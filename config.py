@@ -6,6 +6,8 @@ class Config:
   '''
 
   SECRET_KEY = os.environ.get('SECRET_KEY')
+  MUSIC_CHART_URL = 'https://api.deezer.com/chart/0/tracks'
+  SEARCH_URL = 'https://api.deezer.com/search?q={}'
 
   @staticmethod
   def init_app(app):

@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{% block content %}
+{% for tracks in tracks %}
+<div id="top-artists">
+  <div class="card shadow p-3 mb-5 bg-white rounded card" style="width: 20em;">
+    <div class="card-body">
+      <p>Title: {{tracks.title}}</p>
+      <p>Artist: {{tracks.name.name}}</p>
+      <p>Position: {{tracks.position}}</p>
+      <img src="{{tracks.picture.picture_medium}}" style="width: 100%;height: auto;"><br>
+      <!-- <a href="{{tracks.link}}" target="_blank">
+        <button type="button" class="btn btn-dark">Add fav</button>
+      </a> -->
+      <br><a href="{{tracks.preview}}" target="_blank">
+      <img src="{{url_for('static', filename='/images/play.png')}}" id="play">
+      </a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
