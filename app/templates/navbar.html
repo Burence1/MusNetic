@@ -1,0 +1,19 @@
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <form>
+          <input type="text" name="artist_query" placeholder="Search" class="form-control">
+          <input type="submit" value="Submit" class="btn btn-light">
+        </form>
+        {% if current_user.is_authenticated %}
+        <li><a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a></li><br>
+        {% else %}
+        <li><a class="nav-link" href="{{url_for('auth.login')}}" >Sign in</a></li><br>
+        {%endif%}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

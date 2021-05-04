@@ -10,6 +10,8 @@ class Config:
   PLAYLIST_API_BASE_URL = 'https://api.deezer.com/radio'
   TRACK_API_BASE_URL = 'https://api.deezer.com/radio/{}/tracks'
 
+  MUSIC_CHART_URL = 'https://api.deezer.com/chart/0/tracks'
+  SEARCH_URL = 'https://api.deezer.com/search?q={}'
 
   @staticmethod
   def init_app(app):
@@ -26,7 +28,7 @@ class DevConfig(Config):
   Config child class for development configurations
   '''
 
-  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://burens:Hawaii@localhost/music'
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://cocoh:kitkAt10@localhost/music'
 
   DEBUG=True
 

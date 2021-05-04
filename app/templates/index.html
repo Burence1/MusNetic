@@ -1,4 +1,23 @@
 {% extends 'base.html'%}{% import 'macros.html' as macro%} {% block content%}
+<h1 class="text-center"> Top Songs</h1>
+<hr> {% for tracks in tracks %}
+<div id="top-artists">
+    <div class="card shadow p-3 mb-5 bg-white rounded card" style="width: 20em;">
+        <div class="card-body">
+            <p>Title: {{tracks.title}}</p>
+            <p>Artist: {{tracks.name.name}}</p>
+            <p>Position: {{tracks.position}}</p>
+            <img src="{{tracks.picture.picture_medium}}" style="width: 100%;height: auto;"><br>
+
+            <br>
+            <a href="{{tracks.preview}}" target="_blank">
+                <img src="{{url_for('static', filename='/images/play.png')}}" id="play">
+            </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<hr>
 <h1 class="text-center">Playlists for you</h1>
 <hr>
 <div>

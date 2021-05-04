@@ -85,3 +85,28 @@ class radioTrack:
       self.artist = artist
       self.album = album
       self.preview = preview
+
+
+class Chart:
+  '''
+  Chart class that defines class objects
+  '''
+
+  def __init__(self, id, title, link, preview, picture, position,name):
+    self.id = id
+    self.title = title
+    self.link = link
+    self.preview = preview
+    self.picture = picture
+    self.position = position
+    self.name = name
+
+
+class Artist:
+
+  def __init__(self, id, title, name, preview,picture):
+    self.id = id
+    self.title = title
+    self.name = name
+    self.preview = preview
+    self.picture = picture
