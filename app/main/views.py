@@ -1,9 +1,6 @@
 from flask import url_for,redirect,request,render_template,abort,flash
 from .import main
 from ..models import User
-<<<<<<< HEAD
-from flask_login import current_user,login_required
-=======
 from flask_login import current_user,login_required
 from ..requests import get_chart,search_artist
 
@@ -32,4 +29,3 @@ def search(artist_name):
   title = f"{artist_name}'s search results"
 
   return render_template('search.html', artists=searched_artist)
->>>>>>> ft/search
