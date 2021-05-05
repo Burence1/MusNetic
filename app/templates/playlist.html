@@ -22,7 +22,8 @@
             </td>
             <td><i class="fa fa-heart"></i></td>
             <td>
-                <i class="fa fa-comments"></i>
+            <a href="{{url_for('main.playlist_radio',id=track.id)}}">
+                <i class="fa fa-plus" aria-hidden="true"></i></a>
             </td>
         </tr>
         {%endfor%}

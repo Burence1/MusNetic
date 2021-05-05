@@ -69,3 +69,21 @@ def playlist_chart(id):
             new_playlist = Playlist(track_id=track_id,title=title,user_id=user_id, preview=preview)
             new_playlist.save_playlist()
     return redirect(url_for('main.index', id=id))
+
+
+@main.route('/playlist_radio/<int:id>', methods=['POST', 'GET'])
+def playlist_radio(id):
+    gentracks = get_genre_tracks()
+    for track in gentracks:
+        trackid = track.id
+        tracks = get_radio_tracks(trackid)
+
+        for items in tracks:
+            track_id = items.id
+            title = items.title
+            user_id=current_user._get_current_object().id
+            preview = items.preview
+            if track_id == id:
+                new_playlist = Playlist(track_id=track_id, title=title,user_id=user_id, preview=preview)
+                new_playlist.save_playlist()
+        return render_template('playlist.html', tracks=tracks)
