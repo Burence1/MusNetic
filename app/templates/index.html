@@ -30,14 +30,12 @@
                 <=5 %} <div id="top-artists">
                     <div class="card shadow p-3 mb-5 bg-white rounded card" style="width: 24em;">
                         <div class="card-body">
-                            <p class="cardTitle">Title: {{tracks.title}}</p>
+                            <p>Title: {{tracks.title}}</p>
                             <p>Artist: {{tracks.name.name}}</p>
                             <p>Position: {{tracks.position}}</p>
                             <img src="{{tracks.picture.picture_medium}}" style="width: 100%;height: auto;"><br>
 
-                            <br>.card-body{
-                                background-color: aqua;
-                            }
+                            <br>
                             <a href="{{tracks.preview}}" target="iframe1">
                                 <img src="{{url_for('static', filename='/images/play.png')}}" id="play">
                             </a>
