@@ -3,15 +3,16 @@
 
 {% block content %}
 <div class="container">
-<div class="row">
-<div class="col-md-2"> </div>
-<div class="col-md-8">
-
-{{wtf.quick_form(registration_form)}}
-
+  <div class="row">
+    <div class="col-md-2"> </div>
+    <div class="col-md-8">
+      <div class="card shadow p-3 mb-5 rounded card" style="margin: 2em;">
+        <div class="cardbody">
+          {{wtf.quick_form(registration_form)}}
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="col-md-2"></div>
-</div>
-</div>
-
 {% endblock%}

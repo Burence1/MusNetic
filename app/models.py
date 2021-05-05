@@ -61,3 +61,53 @@ class Review(db.Model):
 
   def __repr__(self):
     return f"Review {self.track_title}"
+class Genre:
+  '''
+  Genre class to define Music Genre objects
+  '''
+  def __init__(self,id,title,poster):
+        self.id=id
+        self.title=title
+        self.poster=poster
+
+class GenreTrack:
+  '''
+  Genre Track class to define track Genre objects
+  '''
+  def __init__(self,id,title,picture,playlist):
+        self.id=id
+        self.title=title
+        self.picture=picture
+        self.playlist = playlist
+
+class radioTrack:
+  def __init__(self, title, artist, album,preview):
+      self.title = title
+      self.artist = artist
+      self.album = album
+      self.preview = preview
+
+
+class Chart:
+  '''
+  Chart class that defines class objects
+  '''
+
+  def __init__(self, id, title, link, preview, picture, position,name):
+    self.id = id
+    self.title = title
+    self.link = link
+    self.preview = preview
+    self.picture = picture
+    self.position = position
+    self.name = name
+
+
+class Artist:
+
+  def __init__(self, id, title, name, preview,picture):
+    self.id = id
+    self.title = title
+    self.name = name
+    self.preview = preview
+    self.picture = picture

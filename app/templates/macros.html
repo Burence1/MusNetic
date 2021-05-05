@@ -1,0 +1,123 @@
+{% macro displayGenreList(genre_list) %}
+<div class="container-fluid">
+    <div id="genre-items" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+        <!--Genre Controls-->
+        <div class="controls-top" id="deluxecontrols">
+            <h1>
+                <a class="btn-floating" href="#genre-items" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                <a class="btn-floating" href="#genre-items" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+            </h1>
+        </div>
+        <!--/.Controls-->
+
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#genre-items" data-slide-to="0" class="active"></li>
+            <li data-target="#genre-items" data-slide-to="1"></li>
+
+        </ol>
+        <!--/.Indicators-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+                {% for genre in genre_list %} {%if genre.id ==132 or genre.id==116 or genre.id==152 or genre.id==113 or genre.id==165 or genre.id==106%}
+                <div class="col-md-2">
+                    <img src="{{ genre.poster }}" alt="{{ genre.title }} poster" class="img-responsive">
+                    <li class="text-center">
+                        {{ genre.title|truncate(10)}}
+                    </li>
+                </div>
+                {%endif%}{% endfor %}
+            </div>
+            <!--/.First slide-->
+
+
+
+            <!--Second slide-->
+            <div class="carousel-item">
+                {% for genre in genre_list %} {%if genre.id ==144 or genre.id==129 or genre.id==98 or genre.id==173 or genre.id==464 or genre.id==169%}
+                <div class="col-md-2">
+                    <img src="{{ genre.poster }}" alt="{{ genre.title }} poster" class="img-responsive">
+                    <li class="text-center">
+                        {{ genre.title|truncate(10)}}
+                    </li>
+                </div>
+                {%endif%}{% endfor %}
+            </div>
+            <!--/.Second slide-->
+        </div>
+        <!--/.Slides-->
+    </div>
+    <!--/.Carousel Wrapper-->
+</div>
+<!-- /genre  -->
+
+
+
+{% endmacro %} {% macro displayPlaylistList(genre_track_list) %}
+
+<div class="container-fluid">
+    <div id="playlist-items" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+        <!--Genre Controls-->
+        <div class="controls-top" id="deluxecontrols">
+            <h1>
+                <a class="btn-floating" href="#playlist-items" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                <a class="btn-floating" href="#playlist-items" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+            </h1>
+        </div>
+        <!--/.Controls-->
+
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#playlist-items" data-slide-to="0" class="active"></li>
+            <li data-target="#playlist-items" data-slide-to="1"></li>
+
+        </ol>
+        <!--/.Indicators-->
+
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+                {%for track in genre_track_list%} {%if track.id ==37151 or track.id==31061 or track.id==38305 or track.id==31021 or track.id==45104 or track.id==30951%}
+                <div class="col-md-2">
+                    <a href="{{url_for('main.genre_music')}}"> <img src="{{ track.picture }}" alt="{{ track.title }} poster" class="img-responsive">
+                        <li class="text-center">
+                            {{ track.title|truncate(10)}}
+                        </li>
+                    </a>
+
+                </div>
+                {%endif%}{% endfor %}
+            </div>
+            <!--/.First slide-->
+
+
+
+            <!--Second slide-->
+            <div class="carousel-item">
+                {%for track in genre_track_list%} {%if track.id ==39071 or track.id==31031 or track.id==30661 or track.id==33071 or track.id==36801 or track.id==38945%}
+                <div class="col-md-2">
+                    <a href="{{url_for('main.genre_music')}}"> <img src="{{ track.picture }}" alt="{{ track.title }} poster" class="img-responsive">
+                        <li class="text-center">
+                            {{ track.title|truncate(10)}}
+                        </li>
+                    </a>
+
+                </div>
+                {%endif%}{% endfor %}
+            </div>
+            <!--/.Second slide-->
+        </div>
+        <!--/.Slides-->
+    </div>
+    <!--/.Carousel Wrapper-->
+</div>
+<!-- /genre  -->
+
+
+{% endmacro %}

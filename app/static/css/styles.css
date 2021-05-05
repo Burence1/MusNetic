@@ -1,0 +1,26 @@
+#play {
+    height: 3em;
+    width: 3em;
+}
+
+.card{
+    margin-right: 2em;
+}
+.cardTitle{
+    color: aqua;
+}
+
+table {
+    border: 2px solid rgb(202, 10, 228, 0.8);
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+}
+
+iframe {
+    margin-left: 40%;
+    margin-right: 40%;
+}
