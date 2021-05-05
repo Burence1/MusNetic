@@ -20,7 +20,10 @@
             <td>{{track.album.title|truncate(20)}}</td>
             <td><a href="{{track.preview}}" target="myIframe"><i class="fa fa-play"></i></a>
             </td>
-            <td><i class="fa fa-heart"></i></td>
+            <td>
+                <a href="{{url_for('main.favourite_radio',id=track.id)}}">
+                    <i class="fa fa-heart"></i></a>
+            </td>
             <td>
                 <i class="fa fa-comments"></i>
             </td>

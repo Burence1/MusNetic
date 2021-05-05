@@ -58,13 +58,36 @@ def search(artist_name):
 
 @main.route('/like/<int:id>', methods=['POST', 'GET'])
 def favourite_top(id):
-
+    trackid_list=[]
     track = get_chart()
-
     for tracks in track:
-        track_id=tracks.id 
-        title=tracks.title 
-        preview=tracks.preview 
+        track_id = tracks.id
+        trackid_list.append(track_id)
+    print (trackid_list)
+    for gtntrackid in trackid_list:
+        if gtntrackid == id:
+            print(gtntrackid)
+            track_id = gtntrackid
+            title=tracks.title 
+            preview=tracks.preview
+            new_like=Favorite(track_id=track_id,title=title,preview=preview)
+            new_like.save_favourite()
+        else:
+            print("None")
+        return redirect(url_for('main.index', id=id))
+
+@main.route('/favtrack/<int:id>', methods=['POST', 'GET'])
+def favourite_radio(id):
+    gentracks = get_genre_tracks()
+
+    for track in gentracks:
+        trackid = track.id
+        tracks = get_radio_tracks(trackid)
+
+        for items in tracks:
+            track_id = items.id
+            title = items.title
+            preview = items.preview
     new_like=Favorite(track_id=track_id,title=title,preview=preview)
     new_like.save_favourite()
-    return redirect(url_for('main.index', id=id))
+    return redirect(url_for('main.favourite_radio',id=id))

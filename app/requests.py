@@ -141,12 +141,13 @@ def process_radio_track_results(track_list):
     '''
     track_results = []
     for track_item in track_list:
+        id=track_item.get('id')
         title = track_item.get('title')
         artist = track_item.get('artist')
         album = track_item.get('album')
         preview=track_item.get('preview')
         
-        track_object = radioTrack(title, artist, album,preview)
+        track_object = radioTrack(id,title, artist, album,preview)
         track_results.append(track_object)
 
     return track_results

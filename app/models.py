@@ -116,7 +116,8 @@ class GenreTrack:
         self.playlist = playlist
 
 class radioTrack:
-  def __init__(self, title, artist, album,preview):
+  def __init__(self,id, title, artist, album,preview):
+      self.id = id
       self.title = title
       self.artist = artist
       self.album = album
