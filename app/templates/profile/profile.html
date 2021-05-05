@@ -4,6 +4,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
+            <!-- Displaying profile photo -->
+            {% if user.profile_pic_path %}
+            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="profile" class="img-thumbnail">
+            {% else %}
+            <p>No profile picture</p>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-4">
             <!-- Displaying the username -->
             <h3>{{user.username | capitalize}}</h3>
             
@@ -12,15 +21,6 @@
             <p>{{user.bio}}</p>
             {% else %}
             <p>{{user.username | capitalize}} has no bio.</p>
-            {% endif %}
-        </div>
-
-        <div class="col-md-4">
-            <!-- Displaying profile photo -->
-            {% if user.profile_pic_path %}
-            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="profile" class="img-thumbnail">
-            {% else %}
-            <p>No profile picture</p>
             {% endif %}
         </div>
     </div>
