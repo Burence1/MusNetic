@@ -42,35 +42,6 @@ class User(UserMixin,db.Model):
   def __repr__(self):
     return f"User {self.username}"
 
-class Review(db.Model):
-  __tablename__='reviews'
-
-  id=db.Column(db.Integer,primary_key=True)
-  track_id=db.Column(db.Integer)
-  track_title=db.Column(db.String(255))
-  review_content=db.Column(db.String(255))
-  user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
-
-  def save_review(self):
-    db.session.add(self)
-    db.session.commit()
-
-  @classmethod
-  def get_reviews(cls, id):
-    reviews = Review.query.filter_by(track_id=id).all()
-
-  def __repr__(self):
-    return f"Review {self.track_title}"
-
-
-class Music(db.Model):
-  __tablename__='musics'
-
-  id=db.Column(db.Integer,primary_key=True)
-  title=db.Column(db.String(255))
-  preview=db.Column(db.String(255))
-  
-
 class Favorite(db.Model):
   __tablename__='favorites'
 
@@ -85,6 +56,22 @@ class Playlist(db.Model):
   __tablename__='playlists'
 
   id=db.Column(db.Integer,primary_key=True)
+  track_id=db.Column(db.Integer)
+  title=db.Column(db.String(255))
+  preview=db.Column(db.String(255))
+  user_id=db.Column(db.Integer,db.ForeignKey('users.id'))
+
+  def save_playlist(self):
+    db.session.add(self)
+    db.commit.add()
+
+  @classmethod
+  def get_playlist(cls,id):
+    my_playlist=Playlist(user=current_user,track_id=id)
+    return my_playlist
+
+  def __repr__(self):
+    return f"{self.track_id}"
 
 class Genre:
   '''
@@ -106,7 +93,8 @@ class GenreTrack:
         self.playlist = playlist
 
 class radioTrack:
-  def __init__(self, title, artist, album,preview):
+  def __init__(self,id, title, artist, album,preview):
+      self.id=id
       self.title = title
       self.artist = artist
       self.album = album

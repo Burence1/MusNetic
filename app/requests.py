@@ -1,8 +1,6 @@
 import urllib.request,json
 from .models import Genre, GenreTrack, radioTrack
-from .models import Chart, Artist
-
-  
+from .models import Chart, Artist  
 
 #Getting the quotes base url
 chart_url = None
@@ -10,7 +8,6 @@ search_url = None
 base_url = None
 base_playlist_url= None
 base_tracks_url=None
-
 
 def configure_request(app):
     global base_url, base_playlist_url, chart_url, artist_url, search_url
@@ -20,7 +17,6 @@ def configure_request(app):
     base_url = app.config['GENRE_API_BASE_URL']
     base_playlist_url = app.config['PLAYLIST_API_BASE_URL']
     base_tracks_url = app.config['TRACK_API_BASE_URL']
-
 
 
 # Get genres
@@ -116,6 +112,7 @@ def get_radio_tracks(trackid):
     Function that gets the json response to the url request
     '''
     get_radiotracks_url = 'https://api.deezer.com/radio/{}/tracks'.format(trackid)
+    print(get_radiotracks_url)
     with urllib.request.urlopen(get_radiotracks_url) as url:
         get_track_data = url.read()
         get_radio_response = json.loads(get_track_data)
@@ -141,18 +138,16 @@ def process_radio_track_results(track_list):
     '''
     track_results = []
     for track_item in track_list:
+        id=track_item.get('id')
         title = track_item.get('title')
         artist = track_item.get('artist')
         album = track_item.get('album')
         preview=track_item.get('preview')
         
-        track_object = radioTrack(title, artist, album,preview)
+        track_object = radioTrack(id,title, artist, album,preview)
         track_results.append(track_object)
 
     return track_results
-
-
-
 
 
 def get_chart():

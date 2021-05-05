@@ -3,6 +3,7 @@ from . import main
 from ..models import User
 from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart, search_artist
 from flask import url_for, redirect,request,render_template,abort,flash
+from .forms import ReviewForm
 
 
 @main.route('/')
