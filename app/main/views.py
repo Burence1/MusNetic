@@ -1,6 +1,6 @@
 from flask_login import login_required, current_user
 from . import main
-from ..models import User
+from ..models import User, Review
 from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart, search_artist
 from flask import url_for, redirect,request,render_template,abort,flash
 
@@ -21,7 +21,7 @@ def index():
     if search_artist:
         return redirect(url_for('.search', artist_name=search_artist))
     else:
-        return render_template('index.html', tracks=track,pop=pop,gentracks=gentracks)
+        return render_template('index.html', tracks=track, pop=pop, gentracks=gentracks)
    
 
 @main.route('/genre/music')
@@ -54,3 +54,13 @@ def search(artist_name):
       return redirect(url_for('.search', artist_name=search_artistOne))
   else:
       return render_template('search.html', artists=searched_artist)
+
+
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username=uname).first()
+    
+    if user is None:
+        abort(404)
+        
+    return render_template("profile/profile.html", user=user)
