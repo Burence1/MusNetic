@@ -62,19 +62,15 @@ def favourite_top(id):
     track = get_chart()
     for tracks in track:
         track_id = tracks.id
-        trackid_list.append(track_id)
-    print (trackid_list)
-    for gtntrackid in trackid_list:
-        if gtntrackid == id:
-            print(gtntrackid)
-            track_id = gtntrackid
-            title=tracks.title 
-            preview=tracks.preview
+        title=tracks.title 
+        preview=tracks.preview
+        if track_id == id:
             new_like=Favorite(track_id=track_id,title=title,preview=preview)
             new_like.save_favourite()
         else:
-            print("None")
-        return redirect(url_for('main.index', id=id))
+            print("no")
+        
+    return redirect(url_for('main.index', id=id))
 
 @main.route('/favtrack/<int:id>', methods=['POST', 'GET'])
 def favourite_radio(id):
@@ -88,6 +84,9 @@ def favourite_radio(id):
             track_id = items.id
             title = items.title
             preview = items.preview
-    new_like=Favorite(track_id=track_id,title=title,preview=preview)
-    new_like.save_favourite()
-    return redirect(url_for('main.favourite_radio',id=id))
+
+            if track_id == id:
+                new_like=Favorite(track_id=track_id,title=title,preview=preview)
+                new_like.save_favourite()
+    
+        return redirect(url_for('main.index',id=id))
