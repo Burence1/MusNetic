@@ -88,5 +88,5 @@ def favourite_radio(id):
             if track_id == id:
                 new_like=Favorite(track_id=track_id,title=title,preview=preview)
                 new_like.save_favourite()
-    
-        return redirect(url_for('main.index',id=id))
+        return render_template('playlist.html', tracks=tracks)
+
