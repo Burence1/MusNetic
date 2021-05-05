@@ -32,7 +32,11 @@ def genre_music():
         trackid=track.id
         tracks = get_radio_tracks(trackid)
 
-        return render_template('playlist.html',tracks=tracks)
+        search_artist = request.args.get('artist_query')
+        if search_artist:
+            return redirect(url_for('.search', artist_name=search_artist))
+        else:
+            return render_template('playlist.html',tracks=tracks)
 
 @main.route('/search/<artist_name>')
 def search(artist_name):
@@ -44,4 +48,9 @@ def search(artist_name):
   searched_artist = search_artist(artist_name_format)
   title = f"{artist_name}'s search results"
 
-  return render_template('search.html', artists=searched_artist)
+  search_artistOne = request.args.get('artist_query')
+
+  if search_artistOne:
+      return redirect(url_for('.search', artist_name=search_artistOne))
+  else:
+      return render_template('search.html', artists=searched_artist)
