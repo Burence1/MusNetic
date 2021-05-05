@@ -1,22 +1,38 @@
-from flask import url_for,redirect,request,render_template,abort,flash
-from .import main
+from flask_login import login_required, current_user
+from . import main
 from ..models import User
-from flask_login import current_user,login_required
-from ..requests import get_chart,search_artist
+from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart, search_artist
+from flask import url_for, redirect,request,render_template,abort,flash
 
 
 @main.route('/')
 def index():
+    '''
+    View root page function that returns the index page and its data
+    '''
+    track = get_chart()
+    #Getting different genre
+    pop = get_genre()
+    gentracks = get_genre_tracks()
 
-  track = get_chart()
   # tracks = get_tracks(4, get_chart)
 
-  search_artist = request.args.get('artist_query')
-  if search_artist:
-    return redirect(url_for('.search', artist_name=search_artist))
-  else:
-    return render_template('index.html', tracks=track)
+    search_artist = request.args.get('artist_query')
+    if search_artist:
+        return redirect(url_for('.search', artist_name=search_artist))
+    else:
+        return render_template('index.html', tracks=track,pop=pop,gentracks=gentracks)
+   
 
+@main.route('/genre/music')
+def genre_music():
+    gentracks = get_genre_tracks()
+
+    for track in gentracks:
+        trackid=track.id
+        tracks = get_radio_tracks(trackid)
+
+        return render_template('playlist.html',tracks=tracks)
 
 @main.route('/search/<artist_name>')
 def search(artist_name):
