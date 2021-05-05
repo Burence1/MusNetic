@@ -1,6 +1,6 @@
 from flask_login import login_required, current_user
 from . import main
-from ..models import User
+from ..models import User,Playlist
 from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart, search_artist
 from flask import url_for, redirect,request,render_template,abort,flash
 from .forms import ReviewForm
@@ -55,3 +55,17 @@ def search(artist_name):
       return redirect(url_for('.search', artist_name=search_artistOne))
   else:
       return render_template('search.html', artists=searched_artist)
+
+
+@main.route('/playlist/<int:id>', methods=['POST', 'GET'])
+def playlist_chart(id):
+    track = get_chart()
+    for tracks in track:
+        track_id = tracks.id
+        title = tracks.title
+        user_id=current_user._get_current_object().id
+        preview = tracks.preview
+        if track_id == id:
+            new_playlist = Playlist(track_id=track_id,title=title,user_id=user_id, preview=preview)
+            new_playlist.save_playlist()
+    return redirect(url_for('main.index', id=id))

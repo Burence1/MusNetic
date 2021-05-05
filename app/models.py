@@ -63,7 +63,7 @@ class Playlist(db.Model):
 
   def save_playlist(self):
     db.session.add(self)
-    db.commit.add()
+    db.session.commit()
 
   @classmethod
   def get_playlist(cls,id):
@@ -104,7 +104,6 @@ class Chart:
   '''
   Chart class that defines class objects
   '''
-
   def __init__(self, id, title, link, preview, picture, position,name):
     self.id = id
     self.title = title
