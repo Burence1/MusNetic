@@ -1,6 +1,6 @@
 from flask_login import login_required, current_user
 from . import main
-from ..models import User,Favorite
+from ..models import User,Favorite,History
 from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart, search_artist
 from flask import url_for, redirect,request,render_template,abort,flash
 
@@ -57,6 +57,7 @@ def search(artist_name):
 
 
 @main.route('/like/<int:id>', methods=['POST', 'GET'])
+@login_required
 def favourite_top(id):
     trackid_list=[]
     track = get_chart()
@@ -65,7 +66,7 @@ def favourite_top(id):
         title=tracks.title 
         preview=tracks.preview
         if track_id == id:
-            new_like=Favorite(track_id=track_id,title=title,preview=preview)
+            new_like = Favorite(track_id=track_id, title=title, preview=preview,user_id=current_user._get_current_object().id)
             new_like.save_favourite()
         else:
             print("no")
@@ -73,7 +74,9 @@ def favourite_top(id):
     return redirect(url_for('main.index', id=id))
 
 @main.route('/favtrack/<int:id>', methods=['POST', 'GET'])
+@login_required
 def favourite_radio(id):
+
     gentracks = get_genre_tracks()
 
     for track in gentracks:
@@ -86,7 +89,23 @@ def favourite_radio(id):
             preview = items.preview
 
             if track_id == id:
-                new_like=Favorite(track_id=track_id,title=title,preview=preview)
+                new_like = Favorite(track_id=track_id, title=title, preview=preview,
+                                    user_id=current_user._get_current_object().id)
                 new_like.save_favourite()
         return render_template('playlist.html', tracks=tracks)
+@main.route('/history/<int:id>', methods=['POST', 'GET'])
+def history_top(id):
+    trackid_list=[]
+    track = get_chart()
+    for tracks in track:
+        track_id = tracks.id
+        title=tracks.title 
+        preview=tracks.preview
+        if track_id == id:
+            new_like=History(track_id=track_id,title=title,preview=preview)
+            new_like.save_history()
+        else:
+            print("no")
+        
+    return redirect(url_for('main.index', id=id))
 

@@ -19,6 +19,7 @@ class User(UserMixin,db.Model):
   bio=db.Column(db.String(255))
   profile_pic_path = db.Column(db.String())
   reviews = db.relationship("Review", backref='user', lazy='dynamic')
+  favorite = db.relationship("Favorite", backref='user', lazy='dynamic')
 
   @property
   def password(self):
@@ -72,6 +73,8 @@ class Favorite(db.Model):
   track_id = db.Column(db.Integer)
   title=db.Column(db.String(255))
   preview=db.Column(db.String(255))
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='SET NULL'), nullable=True)
+
 
   def save_favourite(self):
       db.session.add(self)
@@ -90,6 +93,20 @@ class History(db.Model):
   __tablename__='histories'
 
   id= db.Column(db.Integer,primary_key=True)
+  track_id = db.Column(db.Integer)
+  title = db.Column(db.String(255))
+  preview = db.Column(db.String(255))
+
+  def save_history(self):
+      db.session.add(self)
+      db.session.commit()
+
+  def history(cls, id):
+      history_track = History(user=current_user, track_id=id)
+      history_track.save_history()
+
+  def __repr__(self):
+      return f'{self.track_id}'
 
 class Playlist(db.Model):
   __tablename__='playlists'
