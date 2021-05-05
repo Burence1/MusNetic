@@ -1,4 +1,4 @@
-#!/home/cocoh/Desktop/moringa-school-core/MusNetic/virtual/bin/python
+#!/root/Desktop/MusNetic/virtual/bin/python3.9
 # -*- coding: utf-8 -*-
 import re
 import sys
