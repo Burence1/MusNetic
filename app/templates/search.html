@@ -1,27 +1,25 @@
-{%extends 'base.html'%} {%block content%} {% for artist in artists%}
-<div class="col-sm-6 col-md-4">
+{%extends 'base.html'%} {%block content%} 
+<iframe name='iframe1'></iframe>
+<hr>
+{% for artist in artists%}
+  <div class="col-sm-6 col-md-4">
     <div class="card shadow p-3 mb-5 bg-white rounded card">
-        <div class="card-body">
-            <h4 class="card-title">{{artist.title}}</h4>
-            <p class="metadata">- {{artist.name.name}}</p>
-            <img src="{{artist.picture.picture_medium}}" style="width: 100%;height: auto;"><br>
-            <br>
-            <div>
-                <span>
-                  <a href="{{artist.preview}}" target="_blank">
-                  
-                    <img src="{{url_for('static', filename='/images/play.png')}}" id="play">
-                  </a>
-                </span>
-                <span>
-                  <i class="fa fa-heart"> </i>
-                </span>
-                <span>
-                  <i class="fa fa-comments"></i>
-                </span>
-            </div>
-
+      <div class="card-body">
+        <h4 class="card-title">{{artist.title}}</h4>
+        <p class="metadata">- {{artist.name.name}}</p>
+        <img src="{{artist.picture.picture_medium}}" style="width: 100%;height: auto;"><br>
+        <br>
+        <div>
+          <span>
+            <a href="{{artist.preview}}" target="iframe1">
+              <img src="{{url_for('static', filename='/images/play.png')}}" id="play">
+            </a>
+          </span>
+          <span>
+            <i class="fa fa-heart"></i>
+          </span>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 {% endfor %} {%endblock%}
