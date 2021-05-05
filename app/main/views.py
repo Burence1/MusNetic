@@ -1,6 +1,6 @@
 from flask_login import login_required, current_user
 from . import main
-from ..models import User
+from ..models import User,Favorite
 from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart, search_artist
 from flask import url_for, redirect,request,render_template,abort,flash
 
@@ -54,3 +54,17 @@ def search(artist_name):
       return redirect(url_for('.search', artist_name=search_artistOne))
   else:
       return render_template('search.html', artists=searched_artist)
+
+
+@main.route('/like/<int:id>', methods=['POST', 'GET'])
+def favourite_top(id):
+
+    track = get_chart()
+
+    for tracks in track:
+        track_id=tracks.id 
+        title=tracks.title 
+        preview=tracks.preview 
+    new_like=Favorite(track_id=track_id,title=title,preview=preview)
+    new_like.save_favourite()
+    return redirect(url_for('main.index', id=id))

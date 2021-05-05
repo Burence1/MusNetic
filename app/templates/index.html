@@ -43,7 +43,9 @@
                                 </a>
                                 </span>
                                 <span>
-                                <i class="fa fa-heart"> </i>
+                                <a href="{{url_for('main.favourite_top',id=tracks.id)}}">
+                                    <i class="fa fa-heart"> </i>
+                                </a>
                             </span>
                                 <span>
                                 <i class="fa fa-comments"></i>
@@ -79,7 +81,9 @@
                             </a>
                            </span>
                             <span>
-                             <i class="fa fa-heart"> </i> 
+                                <a href="{{url_for('main.favourite_top',id=tracks.id)}}">
+                                    <i class="fa fa-heart"> </i>
+                                </a>
                          </span>
                             <span>
                             <i class="fa fa-comments"></i>

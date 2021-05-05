@@ -63,21 +63,26 @@ class Review(db.Model):
     return f"Review {self.track_title}"
 
 
-class Music(db.Model):
-  __tablename__='musics'
-
-  id=db.Column(db.Integer,primary_key=True)
-  title=db.Column(db.String(255))
-  preview=db.Column(db.String(255))
-  favorite = db.relationship('Favorite', backref='user', lazy='dynamic')
-
   
 
 class Favorite(db.Model):
   __tablename__='favorites'
 
   id = db.Column(db.Integer,primary_key=True)
-  track_id = db.Column(db.Integer, db.ForeignKey('musics.id', ondelete='SET NULL'), nullable=True)
+  track_id = db.Column(db.Integer)
+  title=db.Column(db.String(255))
+  preview=db.Column(db.String(255))
+
+  def save_favourite(self):
+      db.session.add(self)
+      db.session.commit()
+  def favourite(cls,id):
+      favourite_track=Favorite(user=current_user,track_id=id)
+      favourite_track.save_favourite()
+
+  def __repr__(self):
+      return f'{self.track_id}'
+
 
 
   
