@@ -37,11 +37,7 @@ class DevConfig(Config):
   Config child class for development configurations
   '''
 
-<<<<<<< HEAD
   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://root:root@localhost/music'
-=======
-  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://Burens:Hawaii@localhost/music'
->>>>>>> 376be01fbcf6026313a92e2f8baa29718db576e4
 
   DEBUG=True
 

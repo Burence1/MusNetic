@@ -4,7 +4,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-<<<<<<< HEAD
             <!-- Displaying profile photo -->
             {% if user.profile_pic_path %}
             <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="profile" class="img-thumbnail">
@@ -22,30 +21,14 @@
             <!-- Displaying the username -->
             <h3>{{user.username | capitalize}}</h3>
 
-=======
-            <!-- Displaying the username -->
-            <h3>{{user.username | capitalize}}</h3>
-            
->>>>>>> 376be01fbcf6026313a92e2f8baa29718db576e4
             <!-- Displaying user bio -->
             {% if user.bio %}
             <p>{{user.bio}}</p>
             {% else %}
             <p>{{user.username | capitalize}} has no bio.</p>
             {% endif %}
-<<<<<<< HEAD
             {% if user == current_user %}
             <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
-=======
-        </div>
-
-        <div class="col-md-4">
-            <!-- Displaying profile photo -->
-            {% if user.profile_pic_path %}
-            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="profile" class="img-thumbnail">
-            {% else %}
-            <p>No profile picture</p>
->>>>>>> 376be01fbcf6026313a92e2f8baa29718db576e4
             {% endif %}
         </div>
     </div>
