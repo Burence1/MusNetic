@@ -21,3 +21,10 @@ iframe {
     margin-left: 40%;
     margin-right: 40%;
 }
+
+#search-artist:hover{
+    box-shadow: 0 40px 60px -20px #969090;
+    z-index: 100;
+    opacity: 0.9;
+    color: rgb(0, 183, 255);
+}
