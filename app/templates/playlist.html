@@ -11,6 +11,7 @@
             <th>Album</th>
             <th>Preview</th>
             <th>Favorite</th>
+            <th>Comments</th>
         </tr>
         {%for track in tracks%}
         <tr>
@@ -20,6 +21,9 @@
             <td><a href="{{track.preview}}" target="myIframe"><i class="fa fa-play"></i></a>
             </td>
             <td><i class="fa fa-heart"></i></td>
+            <td>
+                <i class="fa fa-comments"></i>
+            </td>
 
         </tr>
         {%endfor%}
