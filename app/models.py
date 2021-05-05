@@ -69,12 +69,17 @@ class Music(db.Model):
   id=db.Column(db.Integer,primary_key=True)
   title=db.Column(db.String(255))
   preview=db.Column(db.String(255))
+  favorite = db.relationship('Favorite', backref='user', lazy='dynamic')
+
   
 
 class Favorite(db.Model):
   __tablename__='favorites'
 
   id = db.Column(db.Integer,primary_key=True)
+  track_id = db.Column(db.Integer, db.ForeignKey('musics.id', ondelete='SET NULL'), nullable=True)
+
+
   
 class History(db.Model):
   __tablename__='histories'
