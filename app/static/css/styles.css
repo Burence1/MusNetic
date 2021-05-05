@@ -3,9 +3,10 @@
     width: 3em;
 }
 
-.card{
+.card {
     margin-right: 2em;
 }
+
 table {
     border: 2px solid rgb(202, 10, 228, 0.8);
     border-collapse: collapse;
