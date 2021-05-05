@@ -8,9 +8,10 @@
           <input type="submit" value="Submit" class="btn btn-light">
         </form>
         {% if current_user.is_authenticated %}
+        <li><a href="{{url_for('main.profile', uname=current_user.username)}}">Profile</a></li>
         <li><a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a></li><br>
         {% else %}
-        <li><a class="nav-link" href="{{url_for('auth.login')}}" >Sign in</a></li><br>
+        <li><a class="nav-link" href="{{url_for('auth.login')}}">Sign in</a></li><br>
         {%endif%}
         </li>
       </ul>
