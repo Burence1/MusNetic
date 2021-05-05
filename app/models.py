@@ -61,6 +61,31 @@ class Review(db.Model):
 
   def __repr__(self):
     return f"Review {self.track_title}"
+
+
+class Music(db.Model):
+  __tablename__='musics'
+
+  id=db.Column(db.Integer,primary_key=True)
+  title=db.Column(db.String(255))
+  preview=db.Column(db.String(255))
+  
+
+class Favorite(db.Model):
+  __tablename__='favorites'
+
+  id = db.Column(db.Integer,primary_key=True)
+  
+class History(db.Model):
+  __tablename__='histories'
+
+  id= db.Column(db.Integer,primary_key=True)
+
+class Playlist(db.Model):
+  __tablename__='playlists'
+
+  id=db.Column(db.Integer,primary_key=True)
+
 class Genre:
   '''
   Genre class to define Music Genre objects
@@ -86,7 +111,6 @@ class radioTrack:
       self.artist = artist
       self.album = album
       self.preview = preview
-
 
 class Chart:
   '''
