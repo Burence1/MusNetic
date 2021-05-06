@@ -1,13 +1,29 @@
-{%extends 'base.html'%} {%block content%} 
-<h3 style="text-align: center; color: whitesmoke;">Play Track</h3>
-<iframe name='iframe1' id="iframe-search"></iframe>
+{%extends 'base.html'%}
+{%block styles %} {{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/search.css')}}" type="text/css">
+{% endblock %}
+{%block content%}
 <br>
-<br>
-<br>
-<br>
-{% for artist in artists%}
+<div class=" container headerContent2">
+  <h1 class="text-center headingIndex"><i class="fa fa-music" aria-hidden="true"></i> MUSNETIC<i class="fa fa-music"
+      aria-hidden="true"></i>
+  </h1>
+  <hr>
+  <form class="form-inline">
+    <input type="text" name="artist_query" placeholder="Search for artist..." class="form-control searchbox">
+    <input type="submit" value="Search" class="btn btn-light searchbutton">
+  </form>
+</div>
+<div id="search-bg">
+  <h3 style="text-align: center; color: whitesmoke;">Play Track</h3>
+  <iframe name='iframe1' id="iframe-search"></iframe>
+  <br>
+  <br>
+  <br>
+  <br>
+  {% for artist in artists%}
   <div class="col-md-3" id="search">
-    <div class="card shadow p-3 mb-5 bg-white rounded card" style="height: 32em; width: auto;" id="search-artist">
+    <div class="card shadow p-3 mb-5 bg-white rounded card" style="height: 37em; width: auto;" id="search-artist">
       <div class="card-body">
         <h4 class="card-title">{{artist.title}}</h4>
         <p class="metadata">- {{artist.name.name}}</p>
@@ -16,11 +32,12 @@
         <div>
           <span>
             <a href="{{artist.preview}}" target="iframe1">
-              <i class="fa fa-play" style="color: rgb(245, 82, 7);"></i>
-            </a>
+              <i class="fa fa-play" style="color: rgb(245, 82, 7);"></i></a>
           </span>
         </div>
       </div>
     </div>
   </div>
-{% endfor %} {%endblock%}
+</div>
+{% endfor %}
+{%endblock%}
