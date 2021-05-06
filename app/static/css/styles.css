@@ -16,8 +16,8 @@ body {
 .headerContent {
     background-color: rgba(0, 0, 0, 0.4);
     margin-bottom: 3%;
-    border-radius: 2%;
-    box-shadow: 0 0 20px 0 grey;
+    border-radius: 3%;
+    box-shadow: 0 0 20px 0 rgba(245, 82, 7, 0.8);
 }
 
 .headerContent form {
@@ -72,7 +72,7 @@ body {
 
 @keyframes empasis {
     0% {
-        background-color: black;
+        background-color: rgba(245, 82, 7, 0.4);
         left: 0px;
         top: 0px;
     }
@@ -82,7 +82,7 @@ body {
         top: 0px;
     }
     100% {
-        background-color: black;
+        background-color: rgba(245, 82, 7, 0.4);
         left: 0px;
         top: 0px;
     }
@@ -132,15 +132,18 @@ body {
     color: black;
 }
 
-.icons {
+.icons,
+.iconplaylist {
     float: right;
     font-size: 20px;
+    margin-left: 3%;
 }
 
 i.fa.fa-play,
 i.fas.fa-heart,
 i.fas.fa-chevron-left,
-i.fas.fa-chevron-right {
+i.fas.fa-chevron-right,
+i.fa.fa-plus {
     color: rgb(245, 82, 7);
 }
 

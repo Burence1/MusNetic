@@ -1,44 +1,84 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 mt-5">
-            <!-- Displaying profile photo -->
-            {% if user.profile_pic_path %}
-            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="profile" class="img-thumbnail" style="border-radius: 50%;" height="200px" width="200px"> {% else %}
-            <p>No profile picture</p>
-            {% endif %} {% if user == current_user %}
-            <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" class="mt-3" enctype="multipart/form-data">
-                <input type="file" name="photo" class="form-control" required style="border: none;">
-                <input type="submit" value="Update Image" class="profBtn">
-            </form>
-        </div>
-        {% endif %}
-        <div class="col-md-4 mt-5">
-            <!-- Displaying the username -->
-            <h1 class="username">{{user.username | capitalize}}</h1>
+<div class="container profilebck">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class=" container profileContent">
+        <div class="row">
+            <div class="col-md-4 mt-5">
+                <!-- Displaying profile photo -->
+                {% if user.profile_pic_path %}
+                <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="profile" class="img-thumbnail" style="border-radius: 50%;" height="200px" width="200px"> {% else %}
+                <p>No profile picture</p>
+                {% endif %} {% if user == current_user %}
+                <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" class="mt-3" enctype="multipart/form-data">
+                    <input type="file" name="photo" class="form-control" required style="border: none;">
+                    <input type="submit" value="Update Image" class="profBtn">
+                </form>
+            </div>
+            {% endif %}
+            <div class="col-md-4 mt-5">
+                <!-- Displaying the username -->
+                <h1 class="username">{{user.username | capitalize}}</h1>
 
-            <!-- Displaying user bio -->
-            {% if user.bio %}
-            <h4 class="mt-4">{{user.bio}}</h4>
-            {% else %}
-            <h4 class="mt-4">{{user.username | capitalize}} has no bio.</h4>
-            {% endif %} {% if user == current_user %}
-            <a class="mt-4" href="{{url_for('main.update_profile',uname=user.username)}}" class="profBtn">Edit profile</a> {% endif %}
+                <!-- Displaying user bio -->
+                {% if user.bio %}
+                <h4 class="mt-4">{{user.bio}}</h4>
+                {% else %}
+                <h4 class="mt-4">{{user.username | capitalize}} has no bio.</h4>
+                {% endif %} {% if user == current_user %}
+                <a class="mt-4" href="{{url_for('main.update_profile',uname=user.username)}}" class="profBtn">Edit profile</a> {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                {% if current_user %}
+                <h2 class="text-center"> You have liked {{user.favorite.count()}} songs </h2>
+                {% for fav in favorite%}
+                <div class="blogs">
+                    <p>Title: {{fav.title}}</p>
+                    <p class="blog"> {{fav.preview}} "</p>
+                    </p>
+
+                </div>
+                <br> {%endfor%} {%endif%}
+
+            </div>
+            <div class="col-md-5">
+                {% if current_user %}
+                <h2 class="text-center"> You have {{user.playlists.count()}} songs in your playlist </h2>
+                {% for play in playlist%}
+                <div class="blogs">
+                    <p>Title: {{play.title}}</p>
+                    <p class="blog"> {{play.preview}} "</p>
+                    </p>
+
+                </div>
+                <br> {%endfor%} {%endif%}
+
+            </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
-    <div class="col-md-5" id="profilePitch">
-        {% if current_user %}
-        <h2 class="text-center"> You have liked {{user.favorite.count()}} blogs </h2>
-        {% for fav in favorite%}
-        <div class="blogs">
-            <p>Title: {{fav.title}}</p>
-            <p class="blog"> {{fav.preview}} "</p>
-            </p>
 
-        </div>
-        <br> {%endfor%} {%endif%}
-
-    </div>
 </div>
 {% endblock %}

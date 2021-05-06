@@ -1,0 +1,11 @@
+.profilebck {
+    background-image: url('../images/profile.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+.profileContent {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+}
