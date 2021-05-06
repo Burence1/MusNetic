@@ -1,6 +1,6 @@
 from flask_login import login_required, current_user
 from . import main
-from ..models import User,Favorite,History
+from ..models import User,Favorite,History,Playlist
 from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart, search_artist
 from flask import url_for, redirect,request,render_template,abort,flash
 from .. import db, photos
@@ -58,6 +58,39 @@ def search(artist_name):
       return render_template('search.html', artists=searched_artist)
 
 
+@main.route('/playlist/<int:id>', methods=['POST', 'GET'])
+@login_required
+def playlist_chart(id):
+    track = get_chart()
+    for tracks in track:
+        track_id = tracks.id
+        title = tracks.title
+        user_id=current_user._get_current_object().id
+        preview = tracks.preview
+        if track_id == id:
+            new_playlist = Playlist(track_id=track_id,title=title,user_id=user_id, preview=preview)
+            new_playlist.save_playlist()
+    return redirect(url_for('main.index', id=id))
+
+
+@main.route('/playlist_radio/<int:id>', methods=['POST', 'GET'])
+@login_required
+def playlist_radio(id):
+    gentracks = get_genre_tracks()
+    for track in gentracks:
+        trackid = track.id
+        tracks = get_radio_tracks(trackid)
+        for items in tracks:
+            track_id = items.id
+            title = items.title
+            user_id = current_user._get_current_object().id
+            preview = items.preview
+            if track_id == id:
+                new_playlist = Playlist(
+                    track_id=track_id, title=title, user_id=user_id, preview=preview)
+                new_playlist.save_playlist()
+        return render_template('playlist.html', tracks=tracks)
+
 @main.route('/like/<int:id>', methods=['POST', 'GET'])
 @login_required
 def favourite_top(id):
@@ -70,9 +103,6 @@ def favourite_top(id):
         if track_id == id:
             new_like = Favorite(track_id=track_id, title=title, preview=preview,user_id=current_user._get_current_object().id)
             new_like.save_favourite()
-        else:
-            print("no")
-        
     return redirect(url_for('main.index', id=id))
 
 @main.route('/favtrack/<int:id>', methods=['POST', 'GET'])
@@ -84,7 +114,6 @@ def favourite_radio(id):
     for track in gentracks:
         trackid = track.id
         tracks = get_radio_tracks(trackid)
-
         for items in tracks:
             track_id = items.id
             title = items.title
@@ -95,6 +124,7 @@ def favourite_radio(id):
                                     user_id=current_user._get_current_object().id)
                 new_like.save_favourite()
         return render_template('playlist.html', tracks=tracks)
+        
 @main.route('/history/<int:id>', methods=['POST', 'GET'])
 def history_top(id):
     trackid_list=[]

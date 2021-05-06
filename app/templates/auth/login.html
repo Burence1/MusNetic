@@ -1,27 +1,47 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
+{%block styles %} {{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}" type="text/css">
+{% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-2"> </div>
-    <div class="col-md-8">
-      <!--Flash message -->
-      {% for message in get_flashed_messages() %}
-      <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
-      </div>
-      {% endfor %}
-      <!-- Login form -->
-      <div class="card shadow p-3 mb-5 rounded card" style="margin: 2em;">
-        <div class="cardbody">
-          {{wtf.quick_form(login_form)}}
-          <p> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a></p>
+<div class="jumbotron" id="login-bg">
+  <h4 style="opacity: 0.8; text-align: center; color: whitesmoke;"> MUSIC MAKES YOU FEEL LIGHTER<br>
+    <br>
+    LOG IN TO MusNetic
+  </h4>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"> </div>
+      <div class="col-md-8">
+        <!--Flash message -->
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ message }}
         </div>
+        {% endfor %}
+        <!-- Login form -->
+        <div class="card shadow p-3 mb-5 rounded card" style="margin: 2em;" id="log">
+          <div class="cardbody">
+            {{wtf.quick_form(login_form)}}     
+          </div>
+        </div>
+        <p style="text-align: center;color: rgb(245, 82, 7)"> Don't have an account? <a href="{{url_for('auth.register')}}" style="color: rgb(245, 82, 7);">Sign up
+            here</a></p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
       </div>
+      <div clas="col-md-2"> </div>
     </div>
-    <div clas="col-md-2"> </div>
   </div>
 </div>
 {% endblock%}
