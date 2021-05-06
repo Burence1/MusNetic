@@ -5,6 +5,9 @@ from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart,
 from flask import url_for, redirect,request,render_template,abort,flash
 from .. import db, photos
 from .forms import UpdateProfile
+from flask import jsonify
+from flask_cors import CORS,cross_origin
+from dotenv import load_dotenv
 
 
 @main.route('/')
@@ -178,3 +181,22 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+
+@main.route("/upload", methods=['POST'])
+def upload_file():
+  app.logger.info('in upload route')
+
+  cloudinary.config(
+      cloud_name='musnetic', 
+      api_key='727223526185189',
+      api_secret='i5QqXId24yed4oDPoFnfOmVStK'
+    )
+  upload_result = None
+  if request.method == 'POST':
+    file_to_upload = request.files['photos']
+    app.logger.info('%s file_to_upload', file_to_upload)
+    if file_to_upload:
+      upload_result = cloudinary.uploader.upload(file_to_upload)
+      app.logger.info(upload_result)
+      return jsonify(upload_result)

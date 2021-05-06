@@ -9,7 +9,6 @@ class Config:
   GENRE_API_BASE_URL = 'https://api.deezer.com/genre'
   PLAYLIST_API_BASE_URL = 'https://api.deezer.com/radio'
   TRACK_API_BASE_URL = 'https://api.deezer.com/radio/{}/tracks'
-
   MUSIC_CHART_URL = 'https://api.deezer.com/chart/0/tracks'
   SEARCH_URL = 'https://api.deezer.com/search?q={}'
   UPLOADED_PHOTOS_DEST ='app/static/photos'
@@ -20,6 +19,9 @@ class Config:
   MAIL_USE_TLS = True
   MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
   MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+  CLOUD_NAME = os.getenv('CLOUD_NAME')
+  API_KEY = os.getenv('API_KEY')
+  API_SECRET = api_secret = os.getenv('API_SECRET')
 
 
   @staticmethod
