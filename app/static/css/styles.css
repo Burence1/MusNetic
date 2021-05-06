@@ -20,3 +20,12 @@ iframe {
     margin-left: 40%;
     margin-right: 40%;
 }
+
+
+
+#concat{
+        background-image: url(/MusNetic/app/static/images/lg.jpeg);
+        background-position: cover;
+        background-repeat: no-repeat;
+        font-family: 'Montserrat', sans-serif;
+}
