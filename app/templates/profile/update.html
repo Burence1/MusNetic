@@ -1,8 +1,6 @@
-{% extends 'base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
-
-{% block content %}
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {%block styles %} {{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/update.css')}}" type="text/css"> {% endblock %} {% block content %}
 <div class="container mt-5">
-  {{wtf.quick_form(form)}}
+    {{wtf.quick_form(form)}}
 </div>
 {% endblock %}

@@ -10,5 +10,12 @@ $(document).ready(function() {
         $("#iframe3").show('1500');
     });
 
+    $(".editphoto").click(function() {
+        $("#updateprof").show('1500');
+    });
+    $("#submit").click(function() {
+        $("#updateprof").slideDown('2000');
+    });
+
 
 });
