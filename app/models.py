@@ -63,14 +63,6 @@ class Review(db.Model):
     return f"Review {self.track_title}"
 
 
-class Music(db.Model):
-  __tablename__='musics'
-
-  id=db.Column(db.Integer,primary_key=True)
-  title=db.Column(db.String(255))
-  preview=db.Column(db.String(255))
-  
-
 class Favorite(db.Model):
   __tablename__='favorites'
 
