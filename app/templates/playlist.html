@@ -1,32 +1,46 @@
 {% extends 'base.html'%} {% block content%}
-<h1 id="music">Enjoy Music
-</h1>
+<div class="playlist">
+    <br>
+    <br>
 
-<iframe name='myIframe'></iframe>
-<div>
-    <table style="width: 100%">
-        <tr>
-            <th>Title</th>
-            <th>Artist</th>
-            <th>Album</th>
-            <th>Preview</th>
-            <th>Favorite</th>
-        </tr>
-        {%for track in tracks%}
-        <tr>
-            <td>{{track.title}}</td>
-            <td>{{track.artist.name}}</td>
-            <td>{{track.album.title|truncate(20)}}</td>
-            <td><a href="{{track.preview}}" target="myIframe"><i class="fa fa-play"></i></a>
-            </td>
-            <td>
-                <a href="{{url_for('main.favourite_radio',id=track.id)}}">
-                    <i class="fa fa-heart"></i></a>
-            </td>
+    <h1 id="music" class=" text-centre headingplay"><i class="fa fa-quote-left" aria-hidden="true"></i>Enjoy Music<i class="fa fa-quote-right" aria-hidden="true"></i>
+    </h1>
+
+    <div class=" container tablePlay">
+        <br>
+        <br>
+        <iframe name='myIframe2' id="myIframe2"></iframe>
+
+        <table style="text-align:center;">
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Preview</th>
+                <th>Favorite</th>
+            </tr>
+            {%for track in tracks%}
+            <tr>
+                <td>{{track.title}}</td>
+                <td>{{track.artist.name}}</td>
+                <td>{{track.album.title|truncate(20)}}</td>
+                <td><a href=" {{track.preview}} " target="myIframe2"><button class="playlistbtn" style="width:fit-content; height:fit-content;"><i class="fa fa-play"></i></button>
+</a>
+                </td>
+                <td>
+                    <a href="{{url_for( 'main.favourite_radio',id=track.id)}} ">
+                        <i class="fas fa-heart "></i></a>
+                </td>
 
 
-        </tr>
-        {%endfor%}
-    </table>
+            </tr>
+            {%endfor%}
+        </table>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
-<br> {%endblock%}
+{%endblock%}

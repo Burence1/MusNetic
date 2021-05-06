@@ -51,7 +51,7 @@ body {
 }
 
 .headingIndex {
-    font-size: 100px;
+    font-size: 90px;
     font-style: italic;
     color: rgb(245, 82, 7, 0.8);
 }
@@ -114,14 +114,4 @@ i.fas.fa-chevron-right {
     float: left;
     font-size: 20px;
     color: rgb(245, 82, 7);
-}
-
-table {
-    border: 2px solid rgb(202, 10, 228, 0.8);
-    border-collapse: collapse;
-}
-
-th,
-td {
-    text-align: left;
 }
