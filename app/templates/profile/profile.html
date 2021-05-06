@@ -14,71 +14,59 @@
                 {% endif %} {% if user == current_user %}
                 <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" class="mt-3" enctype="multipart/form-data">
                     <input type="file" name="photo" class="form-control" required style="border: none;">
-                    <input type="submit" value="Update Image" class="profBtn">
+                    <input type="submit" value="Update Image" class="btn">
                 </form>
             </div>
             {% endif %}
-            <div class="col-md-4 mt-5">
+            <div class="col-md-4 mt-5 ms-5">
                 <!-- Displaying the username -->
                 <h1 class="username">{{user.username | capitalize}}</h1>
 
                 <!-- Displaying user bio -->
                 {% if user.bio %}
-                <h4 class="mt-4">{{user.bio}}</h4>
+                <h4>{{user.bio}}</h4>
                 {% else %}
-                <h4 class="mt-4">{{user.username | capitalize}} has no bio.</h4>
+                <h4>{{user.username | capitalize}} has no bio.</h4>
                 {% endif %} {% if user == current_user %}
-                <a class="mt-4" href="{{url_for('main.update_profile',uname=user.username)}}" class="profBtn">Edit profile</a> {% endif %}
+                <a class="btn" href="{{url_for('main.update_profile',uname=user.username)}}">Edit
+                profile</a> {% endif %}
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-5">
-                {% if current_user %}
-                <h2 class="text-center"> You have liked {{user.favorite.count()}} songs </h2>
-                {% for fav in favorite%}
-                <div class="blogs">
-                    <p>Title: {{fav.title}}</p>
-                    <p class="blog"> {{fav.preview}} "</p>
-                    </p>
-
-                </div>
-                <br> {%endfor%} {%endif%}
-
-            </div>
-            <div class="col-md-5">
-                {% if current_user %}
-                <h2 class="text-center"> You have {{user.playlists.count()}} songs in your playlist </h2>
-                {% for play in playlist%}
-                <div class="blogs">
-                    <p>Title: {{play.title}}</p>
-                    <p class="blog"> {{play.preview}} "</p>
-                    </p>
-
-                </div>
-                <br> {%endfor%} {%endif%}
-
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#favourite">Favourite Tracks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#playlist">Playlists</a>
+                    </li>
+                </ul>
             </div>
         </div>
+
+        {%if current_user %}
+        <div class="row mt-5">
+            <table class="table" id="favourites">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Track</th>
+                        <th scope="col">Preview</th>
+                    </tr>
+                </thead>
+                {% for track in tracks%}
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{track.name}}</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+        {% endif %}
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-</div>
-{% endblock %}
+    {% endblock %}

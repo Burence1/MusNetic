@@ -1,0 +1,43 @@
+body{
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(../images/search-bg.jpg);    
+}
+
+#search-artist:hover{
+    box-shadow: 0 40px 60px -20px rgb(245, 82, 7);
+    z-index: 100;
+    opacity: 0.9;
+    color: rgb(245, 82, 7);
+    transition: 0.9s;
+}
+
+#search{
+    color: whitesmoke;
+    opacity: 0.8;
+}
+#iframe-search{
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.headerContent2 {
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 3%;
+    border-radius: 2%;
+    box-shadow: 0 0 20px 0 grey;
+}
+
+.headerContent2 form {
+    margin-top: 5%;
+    width: 40%;
+    padding: 20px;
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: 0 0 20px 0 grey;
+    float: center !important;
+    margin-bottom: 2%;
+    align-items: center;
+    font-size: 16px;
+    font-style: bold;
+    margin-left: 30%;
+    margin-right: 10%;
+}

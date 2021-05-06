@@ -147,20 +147,8 @@ i.fa.fa-plus {
     color: rgb(245, 82, 7);
 }
 
-#search-artist:hover {
-    box-shadow: 0 40px 60px -20px rgb(245, 82, 7);
-    z-index: 100;
-    opacity: 0.9;
-    color: rgb(245, 82, 7);
-    transition: 0.9s;
-}
-
 #iframe-search {
     box-shadow: 0 20px 40px -20px rgb(245, 82, 7);
-}
-
-#search {
-    color: whitesmoke;
 }
 
 .iconPlay {
