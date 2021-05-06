@@ -98,3 +98,9 @@ hr {
     margin-right: 10%;
     width: 75%;
 }
+
+.tableProfile th,
+.tableProfile td {
+    text-align: left;
+    padding: 5px;
+}
