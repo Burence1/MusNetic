@@ -1,6 +1,6 @@
 from flask_login import login_required, current_user
 from . import main
-from ..models import User,Favorite,History,Playlist
+from ..models import User,Favorite,Playlist
 from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart, search_artist
 from flask import url_for, redirect,request,render_template,abort,flash
 from .. import db, photos
@@ -103,7 +103,6 @@ def favourite_top(id):
         if track_id == id:
             new_like = Favorite(track_id=track_id, title=title, preview=preview,user_id=current_user._get_current_object().id)
             new_like.save_favourite()
-
     return redirect(url_for('main.index', id=id))
 
 @main.route('/favtrack/<int:id>', methods=['POST', 'GET'])
@@ -124,28 +123,23 @@ def favourite_radio(id):
                 new_like.save_favourite()
         return render_template('playlist.html', tracks=tracks)
         
-@main.route('/history/<int:id>', methods=['POST', 'GET'])
-def history_top(id):
-    trackid_list=[]
-    track = get_chart()
-    for tracks in track:
-        track_id = tracks.id
-        title=tracks.title 
-        preview=tracks.preview
-        if track_id == id:
-            new_like=History(track_id=track_id,title=title,preview=preview)
-            new_like.save_history()
-        
-    return redirect(url_for('main.index', id=id))
+
 
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username=uname).first()
-    
+    user_id = current_user._get_current_object().id
+    favorite = Favorite.query.filter_by(user_id=user_id).all()
+    playlist = Playlist.query.filter_by(user_id=user_id).all()
+
+
     if user is None:
         abort(404)
         
-    return render_template("profile/profile.html", user=user)
+    return render_template("profile/profile.html", user=user,favorite=favorite, user_id=user_id,playlist=playlist)
+
+
+
 
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
