@@ -5,6 +5,9 @@ from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart,
 from flask import url_for, redirect,request,render_template,abort,flash
 from .. import db, photos
 from .forms import UpdateProfile
+from flask import jsonify
+from flask_cors import CORS,cross_origin
+from dotenv import load_dotenv
 
 
 @main.route('/')
@@ -124,7 +127,6 @@ def favourite_radio(id):
         return render_template('playlist.html', tracks=tracks)
         
 
-
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username=uname).first()
@@ -137,9 +139,6 @@ def profile(uname):
         abort(404)
         
     return render_template("profile/profile.html", user=user,favorite=favorite, user_id=user_id,playlist=playlist)
-
-
-
 
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
@@ -172,3 +171,18 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route("/upload", methods=['POST'])
+def upload_file():
+  app.logger.info('in upload route')
+
+  cloudinary.config(cloud_name=os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'),
+                    api_secret=os.getenv('API_SECRET'))
+  upload_result = None
+  if request.method == 'POST':
+    file_to_upload = request.files['file']
+    app.logger.info('%s file_to_upload', file_to_upload)
+    if file_to_upload:
+      upload_result = cloudinary.uploader.upload(file_to_upload)
+      app.logger.info(upload_result)
+      return jsonify(upload_result)

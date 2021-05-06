@@ -147,8 +147,8 @@ i.fa.fa-plus {
     color: rgb(245, 82, 7);
 }
 
-#iframe-search {
-    box-shadow: 0 20px 40px -20px rgb(245, 82, 7);
+#iframe-search{
+ box-shadow: 0 20px 40px -20px rgb(245, 82, 7);   
 }
 
 .iconPlay {
