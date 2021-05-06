@@ -5,7 +5,7 @@
         <li><a href="/">Home</a></li>
         <form>
           <input type="text" name="artist_query" placeholder="Search" class="form-control">
-          <input type="submit" value="Submit" class="btn btn-light">
+          <input type="submit" value="Submit" id="submit" class="btn btn-light">
         </form>
         {% if current_user.is_authenticated %}
         <li><a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a></li><br>

@@ -1,0 +1,28 @@
+.form-group.required:hover{
+    box-shadow: 0 20px 40px -20px rgb(245, 82, 7);
+}
+
+.form-group.required{
+  background-color: transparent;
+}
+
+#submit.btn.btn-default{
+    color: rgb(245, 82, 7);
+}
+
+#reg,#log{
+    background: transparent;
+    color: rgb(245, 82, 7);
+}
+
+#login-bg{
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/login.jpg);
+    background-size: cover;
+}
+
+#submit.btn.btn-default{
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-self: center;
+}

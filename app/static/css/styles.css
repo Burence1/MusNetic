@@ -1,10 +1,20 @@
-#play {
-    height: 3em;
-    width: 3em;
+*{
+  font-size:small;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+body{
+    background-color: rgb(0,0,0);
 }
 
-.card {
+.card{
     margin-right: 2em;
+}
+
+#search-artist {
+    margin-right: 2em;
+    border-radius: 3%;
+    color: black;
 }
 
 table {
@@ -23,8 +33,17 @@ iframe {
 }
 
 #search-artist:hover{
-    box-shadow: 0 40px 60px -20px #969090;
+    box-shadow: 0 40px 60px -20px rgb(245, 82, 7);
     z-index: 100;
     opacity: 0.9;
-    color: rgb(0, 183, 255);
+    color: rgb(245, 82, 7);
+    transition: 0.9s;
+}
+
+#iframe-search{
+ box-shadow: 0 20px 40px -20px rgb(245, 82, 7);   
+}
+
+#search{
+    color: whitesmoke;
 }

@@ -1,9 +1,13 @@
 {%extends 'base.html'%} {%block content%} 
-<iframe name='iframe1'></iframe>
-<hr>
+<h3 style="text-align: center; color: whitesmoke;">Play Track</h3>
+<iframe name='iframe1' id="iframe-search"></iframe>
+<br>
+<br>
+<br>
+<br>
 {% for artist in artists%}
-  <div class="col-sm-6 col-md-4">
-    <div class="card shadow p-3 mb-5 bg-white rounded card" id="search-artist">
+  <div class="col-md-3" id="search">
+    <div class="card shadow p-3 mb-5 bg-white rounded card" style="height: 32em; width: auto;" id="search-artist">
       <div class="card-body">
         <h4 class="card-title">{{artist.title}}</h4>
         <p class="metadata">- {{artist.name.name}}</p>
@@ -12,11 +16,8 @@
         <div>
           <span>
             <a href="{{artist.preview}}" target="iframe1">
-              <img src="{{url_for('static', filename='/images/play.png')}}" id="play">
+              <i class="fa fa-play" style="color: rgb(245, 82, 7);"></i>
             </a>
-          </span>
-          <span>
-            <i class="fa fa-heart"></i>
           </span>
         </div>
       </div>

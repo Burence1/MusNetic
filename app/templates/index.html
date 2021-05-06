@@ -38,24 +38,20 @@
                             <div>
                                 <span>
                                     <a href="{{tracks.preview}}" target="iframe1">
-                                        <img src="{{url_for('static', filename='/images/play.png')}}" id="play">
+                                        <i class="fa fa-play" style="color: rgb(245, 82, 7);"></i>
                                     </a>
                                 </span>
                                 <span>
                                     <a href="{{url_for('main.playlist_chart',id=tracks.id)}}">
-                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                        <i class="fa fa-plus" style="color: rgb(245, 82, 7)" aria-hidden="true"></i>
                                     </a>
                                 </span>
                                 <span>
                                     <i class="fa fa-heart"> </i>
                                 </span>
-                                <span>
-                                    <i class="fa fa-comments"></i>
-                                </span>
                             </div>
                         </div>
                     </div>
-
             </div>
             {%endif%}{% endfor %}
 
@@ -79,22 +75,18 @@
                         <div>
                             <span>
                                 <a href="{{tracks.preview}}" target="iframe1">
-                                    <img src="{{url_for('static', filename='/images/play.png')}}" id="play">
+                                    <i class="fa fa-play" style="color: rgb(245, 82, 7);"></i>
                                 </a>
                             </span>
                             <span>
                                 <a href="{{url_for('main.playlist_chart',id=tracks.id)}}">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <i class="fa fa-plus" style="color: rgb(245, 82, 7)" aria-hidden="true"></i>
                                 </a>
                             </span>
                             <span>
                                 <i class="fa fa-heart"> </i>
                             </span>
-                            <span>
-                                <i class="fa fa-comments"></i>
-                            </span>
                         </div>
-
                     </div>
                 </div>
             </div>

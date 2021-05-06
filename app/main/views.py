@@ -58,6 +58,7 @@ def search(artist_name):
 
 
 @main.route('/playlist/<int:id>', methods=['POST', 'GET'])
+@login_required
 def playlist_chart(id):
     track = get_chart()
     for tracks in track:
@@ -72,6 +73,7 @@ def playlist_chart(id):
 
 
 @main.route('/playlist_radio/<int:id>', methods=['POST', 'GET'])
+@login_required
 def playlist_radio(id):
     gentracks = get_genre_tracks()
     for track in gentracks:
