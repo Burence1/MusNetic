@@ -18,6 +18,7 @@
                 <th>Album</th>
                 <th>Preview</th>
                 <th>Favorite</th>
+                <th>Add to Playlist</th>
             </tr>
             {%for track in tracks%}
             <tr>
@@ -31,8 +32,11 @@
                     <a href="{{url_for( 'main.favourite_radio',id=track.id)}} ">
                         <i class="fas fa-heart "></i></a>
                 </td>
-
-
+                <td>
+                    <a href="{{url_for('main.playlist_radio',id=track.id)}}">
+                        <i class="fa fa-plus" style="color: rgb(245, 82, 7)" aria-hidden="true"></i>
+                    </a>
+                </td>
             </tr>
             {%endfor%}
         </table>
