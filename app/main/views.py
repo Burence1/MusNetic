@@ -1,6 +1,6 @@
 from flask_login import login_required, current_user
 from . import main
-from ..models import User,Favorite,History,Playlist
+from ..models import User,Favorite,Playlist
 from ..requests import get_genre, get_genre_tracks, get_radio_tracks, get_chart, search_artist
 from flask import url_for, redirect,request,render_template,abort,flash
 from .. import db, photos
@@ -106,7 +106,6 @@ def favourite_top(id):
         if track_id == id:
             new_like = Favorite(track_id=track_id, title=title, preview=preview,user_id=current_user._get_current_object().id)
             new_like.save_favourite()
-
     return redirect(url_for('main.index', id=id))
 
 @main.route('/favtrack/<int:id>', methods=['POST', 'GET'])
@@ -127,28 +126,19 @@ def favourite_radio(id):
                 new_like.save_favourite()
         return render_template('playlist.html', tracks=tracks)
         
-@main.route('/history/<int:id>', methods=['POST', 'GET'])
-def history_top(id):
-    trackid_list=[]
-    track = get_chart()
-    for tracks in track:
-        track_id = tracks.id
-        title=tracks.title 
-        preview=tracks.preview
-        if track_id == id:
-            new_like=History(track_id=track_id,title=title,preview=preview)
-            new_like.save_history()
-        
-    return redirect(url_for('main.index', id=id))
 
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username=uname).first()
-    
+    user_id = current_user._get_current_object().id
+    favorite = Favorite.query.filter_by(user_id=user_id).all()
+    playlist = Playlist.query.filter_by(user_id=user_id).all()
+
+
     if user is None:
         abort(404)
         
-    return render_template("profile/profile.html", user=user)
+    return render_template("profile/profile.html", user=user,favorite=favorite, user_id=user_id,playlist=playlist)
 
 
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
@@ -182,19 +172,15 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-
 @main.route("/upload", methods=['POST'])
 def upload_file():
   app.logger.info('in upload route')
 
-  cloudinary.config(
-      cloud_name='musnetic', 
-      api_key='727223526185189',
-      api_secret='i5QqXId24yed4oDPoFnfOmVStK'
-    )
+  cloudinary.config(cloud_name=os.getenv('CLOUD_NAME'), api_key=os.getenv('API_KEY'),
+                    api_secret=os.getenv('API_SECRET'))
   upload_result = None
   if request.method == 'POST':
-    file_to_upload = request.files['photos']
+    file_to_upload = request.files['file']
     app.logger.info('%s file_to_upload', file_to_upload)
     if file_to_upload:
       upload_result = cloudinary.uploader.upload(file_to_upload)

@@ -1,0 +1,106 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(../images/profile.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+.profileContent {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+}
+
+#iframe3 {
+    display: none;
+    margin-left: 30%;
+    box-shadow: 0 0 20px 0 grey;
+    border-radius: 6px;
+    margin-top: 0%;
+    height: 100px;
+    float: center;
+    margin-bottom: 1%;
+}
+
+button {
+    width: 100%;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+li.nav-item {
+    font-size: 18px;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    box-shadow: 0 0 20px 0 rgba(245, 82, 7, 0.8);
+    margin-right: 20px;
+}
+
+a.nav-link {
+    color: rgb(245, 82, 7);
+}
+
+li.nav-item:active {
+    background-color: rgb(245, 82, 7);
+}
+
+#updateprof {
+    margin-top: 5%;
+    width: 100%;
+    padding: 20px;
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: 0 0 20px 0 rgba(245, 82, 7, 0.8);
+    float: left !important;
+    margin-bottom: 2%;
+    align-items: center;
+    font-size: 16px;
+    font-style: bold;
+    margin-right: 20%;
+    padding-right: 5px;
+    display: none;
+}
+
+.bio {
+    align-items: center;
+    float: center;
+}
+
+hr {
+    border: 2px solid rgba(245, 82, 7, 0.8);
+}
+
+.editphoto {
+    width: 50%;
+    float: center;
+    margin-left: 20px;
+    background-color: black;
+    border-radius: 6px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.cardsProfile {
+    text-align: center;
+    width: 100%;
+    color: white;
+    background-color: rgba(245, 82, 7, 0.1);
+    border-radius: 6px;
+    margin-bottom: 4%;
+    font-size: 16px;
+    box-shadow: 0 0 20px 0 rgba(245, 82, 7, 0.8);
+}
+
+.tabsProfile {
+    margin-left: 15%;
+    margin-right: 10%;
+    width: 75%;
+}
+
+.tableProfile th,
+.tableProfile td {
+    text-align: left;
+    padding: 5px;
+}

@@ -21,7 +21,7 @@ class Config:
   MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
   CLOUD_NAME = os.getenv('CLOUD_NAME')
   API_KEY = os.getenv('API_KEY')
-  API_SECRET = api_secret = os.getenv('API_SECRET')
+  API_SECRET =os.getenv('API_SECRET')
 
 
   @staticmethod

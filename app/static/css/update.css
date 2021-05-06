@@ -1,0 +1,66 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(../images/profile.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+form {
+    margin-top: 5%;
+    margin-left: 20%;
+    width: 60%;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px 0 rgba(245, 82, 7, 0.8);
+    float: center;
+    margin-bottom: 10%;
+    align-items: center;
+    font-size: 16px;
+    font-style: bold;
+}
+
+input#submit.btn:hover {
+    background-color: rgba(245, 82, 7, 0.8) !important;
+}
+
+input#submit.btn {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: rgba(245, 82, 7);
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    float: center !important;
+}
+
+.form-check-label {
+    color: white;
+}
+
+textarea.form-control,
+input.form-control {
+    background-color: white;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.form-control:hover,
+.form-check-label:hover,
+input:hover::placeholder {
+    color: rgba(245, 82, 7);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border: 1px solid transparent;
+    box-shadow: 0 0 6px 0 rgba(245, 82, 7);
+    color: black;
+}
+
+label.control-label {
+    font-size: 20px;
+    text-align: center;
+}
