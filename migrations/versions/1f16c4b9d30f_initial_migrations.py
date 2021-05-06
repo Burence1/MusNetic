@@ -1,8 +1,8 @@
-"""empty message
+"""Initial migrations
 
-Revision ID: bf3b6cca443e
+Revision ID: 1f16c4b9d30f
 Revises: 
-Create Date: 2021-05-06 17:30:16.839256
+Create Date: 2021-05-06 18:33:22.015425
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'bf3b6cca443e'
+revision = '1f16c4b9d30f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -33,6 +33,7 @@ def upgrade():
     sa.Column('bio', sa.String(length=255), nullable=True),
     sa.Column('profile_pic_path', sa.String(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email'),
     sa.UniqueConstraint('email')
     )
     op.create_index(op.f('ix_users_username'), 'users', ['username'], unique=False)
