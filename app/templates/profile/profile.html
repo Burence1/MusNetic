@@ -16,7 +16,7 @@ content%}
                 <form action="{{url_for('main.update_pic',uname=user.username)}}" method="post" class="mt-3"
                     enctype="multipart/form-data">
                     <input type="file" name="photo" class="form-control" required style="border: none;">
-                    <input type="submit" value="Update Image" class="btn">
+                    <input type="submit" value="Update Image" class="btn btn-outline-warning mt-3">
                 </form>
             </div>
             {% endif %}
@@ -30,29 +30,18 @@ content%}
                 {% else %}
                 <h4>{{user.username | capitalize}} has no bio.</h4>
                 {% endif %} {% if user == current_user %}
-                <a class="btn" href="{{url_for('main.update_profile',uname=user.username)}}">Edit
+                <a class="btn btn-outline-warning" href="{{url_for('main.update_profile',uname=user.username)}}">Edit
                     profile</a> {% endif %}
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#favourite">Favourite Tracks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#playlist">Playlists</a>
-                    </li>
-                </ul>
+        <iframe class="mt-5" name='iframe3' id="iframe3"></iframe> {%if current_user %}
+        <div class="tabContainer mt-5">
+            <div class="buttonContainer">
+                <button onclick="showPanel(0,'#fff000')">Favourite Tracks</button>
+                <button onclick="showPanel(1,'#f44336')">Playlist</button>
             </div>
-        </div>
-        <br>
-        <br>
-        <div class="tab-content">
-            <div class="row mt-5">
-                <div class="container tab-pane active" id="favourite"><br>
-                    <iframe name='iframe3' id="iframe3"></iframe> {%if current_user %}
-
+            <div class="tabPanel">
+                <div class="row mt-5">
                     <table class="table" id="favourites">
                         <thead>
                             <tr>
@@ -75,12 +64,10 @@ content%}
                         {% endfor %}
                     </table>
                 </div>
-                {% endif %}
             </div>
-            <div class="row mt-5">
-                <div class="container tab-pane active" id="playlist"><br>
-                    <iframe name='iframe3' id="iframe3"></iframe> {%if current_user %}
-                    <table class="table" id="favourites">
+            <div class="tabPanel">
+                <div class="row mt-5">
+                    <table class="table" id="playlist">
                         <thead>
                             <tr>
                                 <th scope="col">Track</th>
@@ -90,7 +77,7 @@ content%}
                         {% for play in playlist%}
                         <tbody>
                             <tr>
-                                <td>{{fav.title}}</td>
+                                <td>{{play.title}}</td>
                                 <td>
                                     <a href="{{play.preview}}" target="iframe3">
                                         <button class="playProfile" style="width:fit-content; height:fit-content;"><i
@@ -102,8 +89,8 @@ content%}
                         {% endfor %}
                     </table>
                 </div>
-                {% endif %}
             </div>
         </div>
+        {% endif %}
     </div>
     {% endblock %}

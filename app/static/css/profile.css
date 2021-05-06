@@ -1,3 +1,31 @@
-.btn{
-    background-color: orange;
+.tabContainer{
+    width: 100%;
+    height: 350px;
+}
+.tabContainer .buttonContainer{
+    height: 15%;
+}
+.tabContainer .buttonContainer button{
+    width: 50%;
+    height: 100%;
+    float: left;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+    background: yellow;
+    color:black;
+}
+.tabContainer .buttonContainer button:hover{
+    background-color: white;
+    color: black;
+}
+.tabContainer .tabPanel{
+    background-color: gray;
+    color: black;
+    text-align: center;
+    padding-top: 105px;
+    box-sizing: border-box;
+    font-size: 22px;
+    display: none;
 }
