@@ -1,8 +1,23 @@
 {% extends 'base.html'%}{% import 'macros.html' as macro%} {% block content%}
 
 <div class="bodyContents">
-    <div class="headerContent">
-        <iframe name='iframe1'></iframe>
+    <div class="header">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class=" container headerContent">
+            <h1 class="text-center headingIndex"><i class="fa fa-music" aria-hidden="true"></i> MUSNETIC<i class="fa fa-music" aria-hidden="true"></i>
+
+            </h1>
+            <h1 class="text-center emphasisIndex">The Art Of Music</h1>
+            <hr>
+            <form class="form-inline">
+                <input type="text" name="artist_query" placeholder="Search for artist..." class="form-control searchbox">
+                <input type="submit" value="Search" class="btn btn-light searchbutton">
+            </form>
+            <iframe name='iframe1' id="iframe1"></iframe>
+        </div>
 
     </div>
     <br>
@@ -48,7 +63,7 @@
                                 <div>
                                     <span class="iconPlay">
                                 <a href="{{tracks.preview}}" target="iframe1">
-                                <i class="fa fa-play"></i>
+                                <button id="play" style="width:fit-content; height:fit-content;"><i class="fa fa-play" ></i></button>
                                 </a>
                                 </span>
                                     <span class="icons">

@@ -2,9 +2,10 @@ body {
     background-color: black;
     color: white;
     overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.headerContent {
+.header {
     height: 100vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgb(245, 82, 7)), url('../images/signUp.jpg');
     background-size: cover;
@@ -12,9 +13,62 @@ body {
     background-attachment: scroll;
 }
 
+.headerContent {
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 3%;
+    border-radius: 2%;
+}
+
+.headerContent form {
+    margin-top: 5%;
+    width: 40%;
+    padding: 20px;
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: 0 0 20px 0 grey;
+    float: center !important;
+    margin-bottom: 10%;
+    align-items: center;
+    font-size: 16px;
+    font-style: bold;
+    margin-left: 30%;
+    margin-right: 10%;
+}
+
+.searchbox {
+    width: 50%;
+}
+
+.searchbutton {
+    border: none;
+    border-radius: 10px;
+    background: rgba(245, 82, 7, 0.8);
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 5%;
+}
+
+.headingIndex {
+    font-size: 100px;
+    font-style: italic;
+    color: rgb(245, 82, 7, 0.8);
+}
+
+.emphasisIndex {
+    font-size: 30px;
+}
+
+iframe {
+    display: none;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
 #play {
-    height: 3em;
-    width: 3em;
+    background: transparent;
+    border: none;
 }
 
 .bodyContents hr {
@@ -22,8 +76,8 @@ body {
 }
 
 .cardindex {
+    background-color: rgb(255, 255, 255, 0.8);
     margin-right: 2em;
-    color: black;
     border-radius: 2%;
     box-shadow: 0 0 20px 0 rgb(245, 82, 7, 0.8);
 }
@@ -39,17 +93,15 @@ body {
     color: rgb(245, 82, 7);
 }
 
-.fa {
-    height: 50px;
-}
-
 .icons {
     float: right;
     font-size: 20px;
 }
 
 i.fa.fa-play,
-i.fas.fa-heart {
+i.fas.fa-heart,
+i.fas.fa-chevron-left,
+i.fas.fa-chevron-right {
     color: rgb(245, 82, 7);
 }
 
@@ -67,10 +119,4 @@ table {
 th,
 td {
     text-align: left;
-}
-
-iframe {
-    margin-left: 40%;
-    margin-right: 40%;
-    margin-top: 10%;
 }
