@@ -23,9 +23,25 @@ iframe {
 
 
 
-#concat{
-        background-image: url(/MusNetic/app/static/images/lg.jpeg);
-        background-position: cover;
-        background-repeat: no-repeat;
-        font-family: 'Montserrat', sans-serif;
+/* #input{
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.05em;
+    font-size: 16px; */
+
+.container{
+    background-color: whitesmoke;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.05em;
+    font-size: 16px;
+}
+
+.cardbody{
+    background-color: white;
+}
+.hover{
+    background-color: #1d0024;
+}
+.close{
+    background-color: #555555;
 }
