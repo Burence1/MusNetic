@@ -12,6 +12,15 @@ class Config:
 
   MUSIC_CHART_URL = 'https://api.deezer.com/chart/0/tracks'
   SEARCH_URL = 'https://api.deezer.com/search?q={}'
+  UPLOADED_PHOTOS_DEST ='app/static/photos'
+  
+  # email configurations
+  MAIL_SERVER = 'smtp.googlemail.com'
+  MAIL_PORT = 587
+  MAIL_USE_TLS = True
+  MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
+  MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+
 
   @staticmethod
   def init_app(app):

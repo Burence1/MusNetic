@@ -1,14 +1,129 @@
-*{
-  font-size:small;
-  font-family: 'Montserrat', sans-serif;
-  overflow-x: hidden;
-}
-body{
-    background-color: rgb(0,0,0);
+body {
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.card{
+.header {
+    height: 100vh;
+    background-image: url('../images/signUp.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
+
+.headerContent {
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 3%;
+    border-radius: 2%;
+    box-shadow: 0 0 20px 0 grey;
+}
+
+.headerContent form {
+    margin-top: 5%;
+    width: 40%;
+    padding: 20px;
+    border-radius: 6px;
+    background: transparent;
+    box-shadow: 0 0 20px 0 grey;
+    float: center !important;
+    margin-bottom: 2%;
+    align-items: center;
+    font-size: 16px;
+    font-style: bold;
+    margin-left: 30%;
+    margin-right: 10%;
+}
+
+.searchbox {
+    width: 50%;
+}
+
+.searchbutton {
+    border: none;
+    border-radius: 10px;
+    background: rgba(245, 82, 7, 0.8);
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 5%;
+}
+
+.headingIndex {
+    font-size: 90px;
+    font-style: italic;
+    color: white;
+    font-weight: bold;
+}
+
+.emphasisIndex {
+    font-size: 30px;
+}
+
+.index {
+    border-radius: 6px;
+    animation-name: empasis;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes empasis {
+    0% {
+        background-color: rgb(245, 82, 7, 0.8);
+        left: 0px;
+        top: 0px;
+    }
+    25% {
+        background-color: black;
+        left: 50px;
+        top: 0px;
+    }
+    100% {
+        background-color: rgb(245, 82, 7, 0.8);
+        left: 0px;
+        top: 0px;
+    }
+}
+
+#iframe1 {
+    display: none;
+    margin-left: 30%;
+    box-shadow: 0 0 20px 0 grey;
+    border-radius: 6px;
+    margin-top: 0%;
+    height: 100px;
+    float: center;
+    margin-bottom: 1%;
+}
+
+.play {
+    background: transparent;
+    border: none;
+}
+
+.bodyContents hr {
+    border: 2px solid rgba(0, 0, 0, 0.4);
+}
+
+.cardindex {
+    background-color: rgb(255, 255, 255, 0.8);
     margin-right: 2em;
+    border-radius: 2%;
+    box-shadow: 0 0 20px 0 rgb(245, 82, 7, 0.8);
+}
+
+.cardRadio {
+    margin-right: 2em;
+    border-radius: 2%;
+    box-shadow: 0 0 20px 0 rgb(245, 82, 7, 0.8);
+}
+
+.cardindex,
+.cardRadio a.btn-floating {
+    color: rgb(245, 82, 7);
 }
 
 #search-artist {
@@ -17,19 +132,16 @@ body{
     color: black;
 }
 
-table {
-    border: 2px solid rgb(202, 10, 228, 0.8);
-    border-collapse: collapse;
+.icons {
+    float: right;
+    font-size: 20px;
 }
 
-th,
-td {
-    text-align: left;
-}
-
-iframe {
-    margin-left: 40%;
-    margin-right: 40%;
+i.fa.fa-play,
+i.fas.fa-heart,
+i.fas.fa-chevron-left,
+i.fas.fa-chevron-right {
+    color: rgb(245, 82, 7);
 }
 
 #search-artist:hover{
@@ -46,4 +158,9 @@ iframe {
 
 #search{
     color: whitesmoke;
+}
+.iconPlay {
+    float: left;
+    font-size: 20px;
+    color: rgb(245, 82, 7);
 }

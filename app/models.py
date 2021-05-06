@@ -19,6 +19,7 @@ class User(UserMixin,db.Model):
   bio=db.Column(db.String(255))
   profile_pic_path = db.Column(db.String())
   playlists = db.relationship("Playlist", backref='user', lazy='dynamic')
+  favorite = db.relationship("Favorite", backref='user', lazy='dynamic')
 
   @property
   def password(self):
@@ -42,16 +43,6 @@ class User(UserMixin,db.Model):
   def __repr__(self):
     return f"User {self.username}"
 
-class Favorite(db.Model):
-  __tablename__='favorites'
-
-  id = db.Column(db.Integer,primary_key=True)
-  
-class History(db.Model):
-  __tablename__='histories'
-
-  id= db.Column(db.Integer,primary_key=True)
-
 class Playlist(db.Model):
   __tablename__='playlists'
 
@@ -72,6 +63,46 @@ class Playlist(db.Model):
 
   def __repr__(self):
     return f"{self.track_id}"
+
+class Favorite(db.Model):
+  __tablename__='favorites'
+
+  id = db.Column(db.Integer,primary_key=True)
+  track_id = db.Column(db.Integer)
+  title=db.Column(db.String(255))
+  preview=db.Column(db.String(255))
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='SET NULL'), nullable=True)
+
+
+  def save_favourite(self):
+      db.session.add(self)
+      db.session.commit()
+  def favourite(cls,id):
+      favourite_track=Favorite(user=current_user,track_id=id)
+      favourite_track.save_favourite()
+
+  def __repr__(self):
+      return f'{self.track_id}'
+
+  
+class History(db.Model):
+  __tablename__='histories'
+
+  id= db.Column(db.Integer,primary_key=True)
+  track_id = db.Column(db.Integer)
+  title = db.Column(db.String(255))
+  preview = db.Column(db.String(255))
+
+  def save_history(self):
+      db.session.add(self)
+      db.session.commit()
+
+  def history(cls, id):
+      history_track = History(user=current_user, track_id=id)
+      history_track.save_history()
+
+  def __repr__(self):
+      return f'{self.track_id}'
 
 class Genre:
   '''
@@ -94,7 +125,7 @@ class GenreTrack:
 
 class radioTrack:
   def __init__(self,id, title, artist, album,preview):
-      self.id=id
+      self.id = id
       self.title = title
       self.artist = artist
       self.album = album

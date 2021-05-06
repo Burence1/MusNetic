@@ -1,0 +1,50 @@
+.playlist {
+    background-image: url('../images/playlist.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.tablePlay {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+}
+
+.headingplay {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    font-style: italic;
+}
+
+table {
+    width: 75%;
+    margin-left: 15%;
+    margin-right: 10%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 5px;
+}
+
+th {
+    font-size: 20px;
+    border-bottom: 4px solid rgb(245, 82, 7);
+}
+
+#myIframe2 {
+    display: none;
+    margin-left: 40%;
+    box-shadow: 0 0 20px 0 grey;
+    border-radius: 6px;
+    margin-top: 0%;
+    height: 100px;
+    float: center;
+    margin-bottom: 1%;
+}
+
+.playlistbtn {
+    background: transparent;
+    border: none;
+}
