@@ -1,0 +1,28 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(../images/profile.jpg);
+    background-size: cover;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+.profileContent {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 6px;
+}
+
+#iframe3 {
+    display: none;
+    margin-left: 30%;
+    box-shadow: 0 0 20px 0 grey;
+    border-radius: 6px;
+    margin-top: 0%;
+    height: 100px;
+    float: center;
+    margin-bottom: 1%;
+}
+
+button {
+    width: 100%;
+    background-color: transparent;
+    font-size: 20px;
+}

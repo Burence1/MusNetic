@@ -14,7 +14,7 @@
         <br>
         <br>
         <div class=" container headerContent">
-            <h1 class="text-center headingIndex"><i class="fa fa-music" aria-hidden="true"></i> MUSNETIC<i class="fa fa-music" aria-hidden="true"></i>
+            <h1 class="text-center headingIndex"><i class="fa fa-music" aria-hidden="true"></i> MusNetic<i class="fa fa-music" aria-hidden="true"></i>
 
             </h1>
             <div class="index">
@@ -82,9 +82,9 @@
                                     <i class="fas fa-heart"> </i>
                                 </a>
                             </span>
-                            <span>
+                                    <span class="iconplaylist">
                                 <a href="{{url_for('main.playlist_chart',id=tracks.id)}}">
-                                    <i class="fa fa-plus" style="color: rgb(245, 82, 7)" aria-hidden="true"></i>
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
                                 </a>
                             </span>
 
@@ -119,16 +119,18 @@
                                     <button class="play" style="width:fit-content; height:fit-content;"><i class="fa fa-play"></i></button>
                                 </a>
                            </span>
+
                                 <span class="icons">
                                 <a href="{{url_for('main.favourite_top',id=tracks.id)}}">
                                     <i class="fas fa-heart"> </i>
                                 </a>
                          </span>
-                        <span>
+                                <span class="iconplaylist">
                             <a href="{{url_for('main.playlist_chart',id=tracks.id)}}">
-                                <i class="fa fa-plus" style="color: rgb(245, 82, 7)" aria-hidden="true"></i>
+                                <i class="fa fa-plus" aria-hidden="true"></i>
                             </a>
                         </span>
+
 
                             </div>
 
