@@ -6,6 +6,9 @@ $(document).ready(function() {
     $(".playlistbtn").click(function() {
         $("#myIframe2").show('1500');
     });
+    $(".playProfile").click(function() {
+        $("#iframe3").show('1500');
+    });
 
 
 });

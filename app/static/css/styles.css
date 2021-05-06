@@ -7,7 +7,7 @@ body {
 
 .header {
     height: 100vh;
-    background-image: url('../images/signUp.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url(../images/search-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: scroll;
