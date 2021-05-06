@@ -6,6 +6,13 @@
         <br>
         <br>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <div class=" container headerContent">
             <h1 class="text-center headingIndex"><i class="fa fa-music" aria-hidden="true"></i> MUSNETIC<i class="fa fa-music" aria-hidden="true"></i>
 
@@ -16,18 +23,19 @@
                 <input type="text" name="artist_query" placeholder="Search for artist..." class="form-control searchbox">
                 <input type="submit" value="Search" class="btn btn-light searchbutton">
             </form>
-            <iframe name='iframe1' id="iframe1"></iframe>
         </div>
 
     </div>
     <br>
 
-    <hr>
     <div class="container-fluid">
+
         <div id="tracks-items" class="carousel slide carousel-multi-item" data-ride="carousel">
 
             <!--Genre Controls-->
             <div class="controls-top" id="deluxecontrols">
+                <iframe name='iframe1' id="iframe1"></iframe>
+
                 <h1>
                     Top Songs
                     <a class="btn-floating" href="#tracks-items" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
@@ -57,13 +65,14 @@
                                 <p>Title: {{tracks.title}}</p>
                                 <p>Artist: {{tracks.name.name}}</p>
                                 <p>Position: {{tracks.position}}</p>
-                                <img src="{{tracks.picture.picture_medium}}" style="width: 100%;height: auto;"><br>
+                                <img src="{{tracks.picture.picture_medium}}" style="width: 100%;height: auto;">
+                                <br>
 
                                 <br>
                                 <div>
                                     <span class="iconPlay">
                                 <a href="{{tracks.preview}}" target="iframe1">
-                                <button id="play" style="width:fit-content; height:fit-content;"><i class="fa fa-play" ></i></button>
+                                <button class="play" style="width:fit-content; height:fit-content;"><i class="fa fa-play" ></i></button>
                                 </a>
                                 </span>
                                     <span class="icons">
@@ -100,8 +109,8 @@
                                 <span class="iconPlay">
 
                                 <a href="{{tracks.preview}}" target="iframe1">
-                                <i class = "fa fa-play"></i>
-                            </a>
+                                    <button class="play" style="width:fit-content; height:fit-content;"><i class="fa fa-play"></i></button>
+                                </a>
                            </span>
                                 <span class="icons">
                                 <a href="{{url_for('main.favourite_top',id=tracks.id)}}">
