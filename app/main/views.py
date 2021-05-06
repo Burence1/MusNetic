@@ -109,9 +109,7 @@ def favourite_top(id):
 @main.route('/favtrack/<int:id>', methods=['POST', 'GET'])
 @login_required
 def favourite_radio(id):
-
     gentracks = get_genre_tracks()
-
     for track in gentracks:
         trackid = track.id
         tracks = get_radio_tracks(trackid)
@@ -137,8 +135,6 @@ def history_top(id):
         if track_id == id:
             new_like=History(track_id=track_id,title=title,preview=preview)
             new_like.save_history()
-        else:
-            print("no")
         
     return redirect(url_for('main.index', id=id))
 
