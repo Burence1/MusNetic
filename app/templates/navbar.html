@@ -1,19 +1,15 @@
-<div class="navbar navbar-inverse" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <form>
-          <input type="text" name="artist_query" placeholder="Search" class="form-control">
-          <input type="submit" value="Submit" class="btn btn-light">
-        </form>
-        {% if current_user.is_authenticated %}
-        <li><a class="nav-link" href="{{url_for('auth.logout')}}">Sign out</a></li><br>
-        {% else %}
-        <li><a class="nav-link" href="{{url_for('auth.login')}}" >Sign in</a></li><br>
-        {%endif%}
-        </li>
-      </ul>
-    </div>
-  </div>
+<link rel="stylesheet" href="{{url_for('static',filename='css/navbar.css')}}" type="text/css">
+<script src="https://kit.fontawesome.com/cc1a8ab208.js" crossorigin="anonymous"></script>
+
+<div class="navigation">
+  <label class="icon">MusNetic</label>
+  <ul>
+    <li><a href="{{url_for('main.index')}}">Home</a></li>
+    {% if current_user.is_authenticated %}
+    <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
+    <li><a href="{{url_for('auth.logout')}}">Sign Out</a></li>
+    {% else %}
+    <li><a href="{{url_for('auth.login')}}">Sign In</a></li>
+    {% endif %}
+  </ul>
 </div>

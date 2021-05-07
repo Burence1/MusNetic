@@ -1,28 +1,133 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {%block styles %} {{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/profile1.css')}}" type="text/css"> {% endblock %}{%block content%}
+<div class="container profilebck">
+    <br>
+    <br>
+    <div class=" container profileContent">
+        <div class="row">
 
-{% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <!-- Displaying the username -->
-            <h3>{{user.username | capitalize}}</h3>
-            
-            <!-- Displaying user bio -->
-            {% if user.bio %}
-            <p>{{user.bio}}</p>
-            {% else %}
-            <p>{{user.username | capitalize}} has no bio.</p>
-            {% endif %}
+            <div class="col-md-4 mt-5">
+                <div class="card cardsProfile">
+                    <div class="card-img">
+                        {% if user.profile_pic_path %}
+                        <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="profile" class="img-thumbnail"> {%else%}
+                        <p>No profile picture</p>
+                        {% endif %}
+                        <button class="editphoto">update pic</button>
+                    </div>
+
+                    <div>
+                        {% if user == current_user %}
+                        <form id="updateprof" action="{{url_for('main.update_pic',uname=user.username)}}" method="post" class="mt-3" enctype="multipart/form-data">
+                            <input type="file" name="photo" class="form-control" required style="border: none;">
+                            <input type="submit" value="Update Image" class="btn">
+                        </form>
+                        {% endif %}
+                    </div>
+                    <hr>
+                    <div class="card-body" id="profileStatus">
+                        <p class="card-title">{{user.firstname}} {{user.lastname}}</p>
+                        <p class="card-subtitle text-muted"> Username: {{user.username}}</p>
+                        {% if user.bio %}
+                        <h2><i class="fas fa-quote-left"></i></h2>
+                        <p class="card-title"> {{user.bio}}</p>
+                        {%else%}
+                        <p class="card-title"> {{user.username| capitalize}} has no bio.</p>
+                        {% endif %}
+                        <div>
+                            <p class="linkUpdate"> {% if user == current_user %}
+                                <a href="{{url_for('main.update_profile',uname=user.username)}}"><i class="fa fa-edit text-primary">Edit
+                                        Profile</i></a> {%endif %}
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-8">
+                <br>
+                <br>
+                <br>
+                <div class="col-md-8 navtabs">
+                    <ul class="nav nav-pills  nav-fill tabsProfile" role="tablist">
+                        <li class="nav-item tabsIndex ">
+                            <a class="nav-link active" data-toggle="tab" href="#favourite">Favourite Tracks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#playlisttab" data-toggle="tab">Playlists</a>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <br>
+                <br>
+                <iframe name='iframe3' id="iframe3"></iframe>
+
+                <div>
+                    <div class="tab-content">
+                        <div class="container tab-pane active" id="favourite">
+
+                            <table class="tableProfile">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Track</th>
+                                        <th scope="col">Preview</th>
+                                    </tr>
+                                </thead>
+                                {% for fav in favorite%}
+                                <tbody>
+                                    <tr>
+                                        <td>{{fav.title}}</td>
+                                        <td>
+                                            <a href="{{fav.preview}}" target="iframe3">
+                                                <button class="playProfile" style="width:fit-content; height:fit-content;"><i
+                                                        class="fa fa-play"></i></button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        <div class="container tab-pane fade" id="playlisttab">
+
+                            <table class="tableProfile">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Track</th>
+                                        <th scope="col">Preview</th>
+                                    </tr>
+                                </thead>
+                                {% for play in playlist%}
+                                <tbody>
+                                    <tr>
+                                        <td>{{play.title}}</td>
+                                        <td>
+                                            <a href="{{play.preview}}" target="iframe3">
+                                                <button class="playProfile" style="width:fit-content; height:fit-content;"><i
+                                                        class="fa fa-play"></i></button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
         </div>
 
-        <div class="col-md-4">
-            <!-- Displaying profile photo -->
-            {% if user.profile_pic_path %}
-            <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="profile" class="img-thumbnail">
-            {% else %}
-            <p>No profile picture</p>
-            {% endif %}
-        </div>
+
+
     </div>
 </div>
+
 {% endblock %}
